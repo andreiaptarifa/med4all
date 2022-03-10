@@ -3,7 +3,7 @@
 require 'nokogiri'
 require 'open-uri'
 # csv will be used to export data
-# require 'csv'
+require 'csv'
 
 letters = ("a".."z").to_a
 
@@ -39,18 +39,18 @@ medications.first(2).each do |medication|
   html_file = URI.open(medication).read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(".new-product-header__top-side.new-product-header__top-side--quantity-ab-test").each do |element|
-    Medication.create! = (
-                          active_substance: element.search(".new-product-header__top-side__top-middle-side__substance-wrapper").text.strip,
-                          commercial_name: element.search(".new-product-header__top-side__top-middle-side__title-wrapper").first.text.strip.split(',')[0].split(/\s*\A\s*(\w+)\s*(\w+)/)[1],
-                          concentration: element.search(".new-product-header__top-side__top-middle-side__title-wrapper").first.text.strip.split(',')[0].split(/\s*(\d+\w+)\D\w+/)[1],
-                          lab: element.search(".new-product-header__topic.new-product-header__topic--factory .new-product-header__factory-wrapper__text b").text.strip
-                          # imagem = element.search(".new-product-header__top-side__top-left-side img")
+    Medication.create!(
+                        active_substance = element.search(".new-product-header__top-side__top-middle-side__substance-wrapper").text.strip,
+                        commercial_name = element.search(".new-product-header__top-side__top-middle-side__title-wrapper").first.text.strip.split(',')[0].split(/\s*\A\s*(\w+)\s*(\w+)/)[1],
+                        concentration = element.search(".new-product-header__top-side__top-middle-side__title-wrapper").first.text.strip.split(',')[0].split(/\s*(\d+\w+)\D\w+/)[1],
+                        lab = element.search(".new-product-header__topic.new-product-header__topic--factory .new-product-header__factory-wrapper__text b").text.strip
+                        # imagem = element.search(".new-product-header__top-side__top-left-side img")
     )
   end
 end
 
 
-require "csv"
+# require "csv"
 
 filepath_capital = "db/data/unidades_capital.csv"
 
