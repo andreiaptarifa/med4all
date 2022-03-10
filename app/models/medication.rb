@@ -1,4 +1,5 @@
 class Medication < ApplicationRecord
+
   def add_keywords_to_profile(user)
     io = open(user.resume_pdf.to_s)
     reader = PDF::Reader.new(io)
@@ -12,4 +13,7 @@ class Medication < ApplicationRecord
       end
     end
   end
+
+  has_many :medicationorders
+
 end
