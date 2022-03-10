@@ -1,3 +1,4 @@
+
 require "csv"
 
 filepath_capital = "db/data/unidades_capital.csv"
