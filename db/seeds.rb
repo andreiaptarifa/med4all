@@ -28,4 +28,3 @@ CSV.foreach(filepath_capital, headers: :first_row) do |row|
     pharmacy_address: "#{row[1]}, São Paulo"
   )
 end
-
