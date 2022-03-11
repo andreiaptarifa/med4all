@@ -1,0 +1,24 @@
+<div class="container m-5">
+<h2> Suas reservas: </h2>
+  <table class="table table-striped justify-content-center">
+    <thead>
+    <tr>
+      <th>Nome do Medicamento</th>
+      <th>Posto de Saúde</th>
+      <th>Unidades Reservadas</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @medication_orders.each do |medication_order| %>
+      <tr>
+        <td><%= medication_order.medication.commercial_name %></td>
+        <td><%= medication_order.pharmacy.pharmacy_name %></td>
+        <td><%= medication_order.units %></td>
+          <%# <td>
+          <%= link_to 'Cancelar', root_path, class: 'btn btn-outline-dark' %>
+          <%# </td> %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

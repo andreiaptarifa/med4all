@@ -1,4 +1,8 @@
 class MedicationOrdersController < ApplicationController
+  def index
+    @medication_orders = MedicationOrder.all
+  end
+
   def new
     @medication_order = MedicationOrder.new
   end
@@ -15,10 +19,14 @@ class MedicationOrdersController < ApplicationController
     @medication_order.user = current_user
 
     if @medication_order.save
-      redirect_to root_path
+      redirect_to medication_order_path(@medication_order)
     else
       render 'new'
     end
+  end
+
+  def show
+    @medication_order = MedicationOrder.find(params[:id])
   end
 
   private
