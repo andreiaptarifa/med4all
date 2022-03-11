@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :medication_order, only: :show
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :medication_orders, only: [ :new, :create, :show ]
+
+  resources :donations, only: %i[new create index show]
 end
