@@ -16,4 +16,7 @@ class Medication < ApplicationRecord
 
   has_many :medicationorders
 
+  def name_and_concentration
+    return "#{commercial_name} - #{concentration}"
+  end
 end
