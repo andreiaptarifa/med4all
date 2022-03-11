@@ -1,6 +1,5 @@
 require 'csv'
 
-
 filepath = "db/data/new_csv.csv"
 
 CSV.foreach(filepath, quote_char: "\x00", headers: :first_row) do |row|
@@ -30,7 +29,3 @@ CSV.foreach(filepath_capital, headers: :first_row) do |row|
   )
 end
 
-# pharmacies realmente tem id de medication???
-# questão do endereço
-# precisaremos do telefone?
-# remover id de medication da tabela 
