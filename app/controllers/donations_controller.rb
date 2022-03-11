@@ -13,7 +13,6 @@ class DonationsController < ApplicationController
     # @donation.pharmacy = @pharmacy
     if @donation.save
       # redirect_to donation_path(@donation), notice: "Parabéns! Sua doação foi criada e irá para o hospital #{@pharmacy.pharmacy_name}. Muito obrigado pelo seu gesto!"
-      raise
       redirect_to root_path
     else
       render :new
