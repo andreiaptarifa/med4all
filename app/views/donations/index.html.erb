@@ -1,0 +1,36 @@
+<div class="container py-5 mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="treatment_container">
+      <h1>Suas doações:</h1>
+      <table class="table table-striped justify-content-center">
+        <thead>
+          <tr>
+            <th>Medicamento</th>
+            <th>Principio ativo</th>
+            <th>Quantidade</th>
+            <th>Data da doação</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @donations.each do |donation| %>
+          <tr>
+            <td><%= donation.commercial_name %></td>
+            <td><%= donation.active_substance %></td>
+            <td><%= donation.concentration %></td>
+            <td><%= donation.quantity %></td>
+            <td><%= donation.date %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <h2>Obrigado, sua doação ajuda a salvar vidas!</h2>
+      </div>
+   </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center container m-5">
+  <%= link_to 'Nova doação', new_donation_path %>
+</div>

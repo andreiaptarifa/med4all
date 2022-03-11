@@ -1,5 +1,14 @@
 class DonationsController < ApplicationController
   before_action :set_donations, only: [:show]
+
+  def index
+    @donations = Donation.where(user_id: params[current_user.id])
+  end
+
+  def show
+    @donation = Donation.find(params[:id])
+  end
+
   def new
     @donation = Donation.new
   end
@@ -19,34 +28,6 @@ class DonationsController < ApplicationController
     end
   end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   private
 
   def donations_params
@@ -56,5 +37,4 @@ class DonationsController < ApplicationController
   def set_donations
     @donation = Donation.find(params[:id])
   end
-
 end

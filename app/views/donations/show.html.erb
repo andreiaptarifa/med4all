@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-around donation-container container mb-3">
+  <div class="row mt-5">
+      <div class="donation">
+      <h1>Você está doando o seguite medicamento:</h1>
+        <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th scope="row">Medicamento</th>
+            <td><%= @donation.medication.commercial_name.capitalize %></td>
+          </tr>
+          <tr>
+            <th scope="row">Principio ativo</th>
+            <td><%= @donation.medication.active_substance.capitalize %></td>
+          </tr>
+          <tr>
+            <th scope="row">Concentração</th>
+            <td><%= @donation.medication.concentration %></td>
+          </tr>
+          <tr>
+            <th scope="row">Quantidade</th>
+            <td><%= @donation.units %></td>
+          </tr>
+          <tr>
+            <th scope="row">Data de validade</th>
+            <td>De <%= @donation.expiry_date %></td>
+          </tr>
+          <tr>
+            <th scope="row">Laboratório</th>
+            <td>De <%= @donation.medication.lab.capitalize %></td>
+          </tr>
+        </tbody>
+       </table>
+       <h2>Sua doação é muito importante para nós!</h2>
+     </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center container m-5">
+  <%= link_to 'Suas doações', donations_path %>
+</div>
