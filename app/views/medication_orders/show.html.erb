@@ -1,6 +1,20 @@
-<div class="container">
-  <%= @medication_order.user_id %>
-  <%= @medication_order.medication.commercial_name %>
-  <%= @medication_order.pharmacy_name %>
-  <%= @medication_order.units %>
+<div class="container m-5">
+<h2> Sua reserva: </h2>
+  <table class="table table-striped justify-content-center">
+      <thead>
+        <tr>
+          <th>Nome do Medicamento</th>
+          <th>Posto de Saúde</th>
+          <th>Unidades Reservadas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+           <td><%= @medication_order.medication.commercial_name %></td>
+           <td><%= @medication_order.pharmacy.pharmacy_name %></td>
+           <td><%= @medication_order.units %></td>
+        </tr>
+      </tbody>
+    </table>
+  <%= link_to 'Ver todas as reservas', medication_orders_path(@medication_orders), class: 'btn btn-outline-dark' %>
 </div>
