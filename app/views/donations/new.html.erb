@@ -1,21 +1,17 @@
 <div class="container mt-5">
 <h1>Nova doação</h1>
 
-<%= form_tag medications_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Digite o nome do medicamento ou princípio ativo"
-%>
-  <%= submit_tag "Procurar", class: "btn btn-primary" %>
-<% end %>
-
-<%= simple_form_for [@donation] do |f|%>
-  <%= f.input :units %>
-  <%= f.input :expiry_date %>
-  <%= f.association :medication, collection: Medication.all.order(:commercial_name), label_method: :name_and_concentration %>
-  <%= f.association :pharmacy, collection: Pharmacy.all.order(:pharmacy_name), label_method: :pharmacy_name %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
-
+<div class="search-bar d-flex mt-4">
+  <div class="form-search col-6">
+    <%= form_tag medications_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Digite o nome do medicamento ou princípio ativo"%>
+  </div>
+  <div class="search-button">
+      <%= submit_tag "Procurar", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 </div>
