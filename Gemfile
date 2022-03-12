@@ -25,6 +25,10 @@ gem 'jbuilder', '~> 2.7'
 # Installing Devise gem
 gem 'devise'
 
+# Installing geocoder gem:
+gem "geocoder"
+
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
