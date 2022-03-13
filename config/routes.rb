@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :medication_orders, only: [ :new, :create, :show, :index ]
 
   resources :donations, only: %i[new create index show]
+
+  resources :pharmacies, only: :index
 end
