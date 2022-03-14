@@ -21,7 +21,7 @@ class DonationsController < ApplicationController
   end
 
   def index
-    @donations = Donation.where(user_id: params[current_user.id])
+    @donations = Donation.where(user_id: current_user.id)
   end
 
   def show

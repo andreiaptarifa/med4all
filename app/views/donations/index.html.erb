@@ -8,6 +8,7 @@
           <tr>
             <th>Medicamento</th>
             <th>Principio ativo</th>
+            <th>Concentração</th>
             <th>Quantidade</th>
             <th>Data da doação</th>
             <th></th>
@@ -16,11 +17,11 @@
         <tbody>
         <% @donations.each do |donation| %>
           <tr>
-            <td><%= donation.commercial_name %></td>
-            <td><%= donation.active_substance %></td>
-            <td><%= donation.concentration %></td>
+            <td><%= donation.medication.commercial_name %></td>
+            <td><%= donation.medication.active_substance %></td>
+            <td><%= donation.medication.concentration %></td>
             <td><%= donation.units %></td>
-            <td><%= donation.date %></td>
+            <td><%= donation.created_at.strftime("%d-%m-%y") %></td>
           </tr>
         <% end %>
         </tbody>
