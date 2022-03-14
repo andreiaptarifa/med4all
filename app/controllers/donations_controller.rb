@@ -1,14 +1,6 @@
 class DonationsController < ApplicationController
   before_action :set_donations, only: [:show]
 
-  def index
-    @donations = Donation.where(user_id: params[current_user.id])
-  end
-
-  def show
-    @donation = Donation.find(params[:id])
-  end
-
   def new
     @donation = Donation.new
   end
@@ -21,11 +13,19 @@ class DonationsController < ApplicationController
     # @pharmacy = Pharmacy.find(params[:pharmacy_id])
     # @donation.pharmacy = @pharmacy
     if @donation.save
-      # redirect_to donation_path(@donation), notice: "Parabéns! Sua doação foi criada e irá para o hospital #{@pharmacy.pharmacy_name}. Muito obrigado pelo seu gesto!"
-      redirect_to root_path
+      redirect_to donations_path, notice: "Sua doação foi criada e será encaminhada para #{@donation.pharmacy.pharmacy_name}. Obrigado, sua doação ajuda a salvar vidas!"
+      # redirect_to root_path
     else
       render :new
     end
+  end
+
+  def index
+    @donations = Donation.where(user_id: params[current_user.id])
+  end
+
+  def show
+    @donation = Donation.find(params[:id])
   end
 
   private
