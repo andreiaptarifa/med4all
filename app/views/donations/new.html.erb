@@ -1,33 +1,33 @@
 <div class="container mt-5">
   <h1>Nova doação</h1>
 
-
-  <%= simple_form_for [@donation] do |f|%>
-    <%= f.input :units %>
-    <%= f.input :expiry_date %>
-    <%= f.button :submit, :label => "Doar", class: 'btn btn-primary' %>
-  <% end %>
-
-  <div style="width: 100%; height: 400px;"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-
-
-<div class="search-bar d-flex mt-4">
-  <div class="form-search col-6">
-    <%= form_tag medications_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Digite o nome do medicamento ou princípio ativo"%>
-  </div>
-  <div class="search-button">
-      <%= submit_tag "Procurar", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+  <div class="search-bar d-flex mt-4 mb-3">
+    <div class="form-search col-6">
+      <%= form_tag medications_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Digite o nome do medicamento ou princípio ativo"%>
+    </div>
+    <div class="search-button">
+        <%= submit_tag "Procurar", class: "btn btn-primary" %>
+      <% end %>
+    </div>
 </div>
 
+<%= simple_form_for [@donation] do |f|%>
+    <span>Nome do medicamento:</span>
+    <%= f.input :medication_id, :label => false , as: :hidden %>
+    <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
+    <%= f.input :expiry_date, :label => "Data de validade", class:'d-none' %>
+    <%= f.button :submit, :label => "Doar", class: 'btn btn-primary mb-5' %>
+<% end %>
+
+<h5>Unidades mais próximas a você: </h5>
+<div style="width: 100%; height: 400px;"
+  data-controller="mapbox"
+  data-mapbox-markers-value="<%= @markers.to_json %>"
+  data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 
 </div>
