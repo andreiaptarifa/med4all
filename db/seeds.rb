@@ -3,6 +3,10 @@ require 'nokogiri'
 require 'open-uri'
 # csv will be used to export data
 require 'csv'
+MedicationOrder.destroy_all
+Donation.destroy_all
+Pharmacy.destroy_all
+Medication.destroy_all
 
 letters = ("a".."z").to_a
 
@@ -22,7 +26,8 @@ end
 
 medications = []
 
-active_principles.first(10).each do |active_principle|
+active_principles.first(15).each do |active_principle|
+  sleep 2
   html_file = URI.open(active_principle).read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(".result-item__title a").each do |element|
@@ -34,7 +39,8 @@ end
 # puts medications[0]
 puts "--> Até aqui deu certo :D"
 
-medications.first(10).each do |medication|
+medications.first(20).each do |medication|
+  sleep 2
   html_file = URI.open(medication).read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(".new-product-header__top-side.new-product-header__top-side--quantity-ab-test").each do |element|
