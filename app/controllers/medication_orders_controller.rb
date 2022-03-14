@@ -1,6 +1,6 @@
 class MedicationOrdersController < ApplicationController
   def index
-    @medication_orders = MedicationOrder.all
+    @medication_orders = MedicationOrder.where(user_id: params[current_user.id])
   end
 
   def new

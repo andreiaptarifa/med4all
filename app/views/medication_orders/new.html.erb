@@ -1,16 +1,34 @@
 <div class="container py-5 mt-5">
-  <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
-      <div class="bg-white form-card p-3 shadow">
-        <h2>Criar um novo tratamento:</h2>
-        <%= simple_form_for [ @medication_order ] do |f| %>
-          <%= f.association :medication, label: "Nome do Medicamento", label_method: :commercial_name, class: "form-control form-control-lg" %>
-          <%= f.association :medication, label: "Princípio Ativo do Medicamento", label_method: :active_substance, class: "form-control form-control-lg" %>
-          <%= f.association :pharmacy, label: "Posto de Saúde", label_method: :pharmacy_name, class: "form-control form-control-lg" %>
-          <%= f.input :units, label: "Unidades", class: "form-control form-control-lg" %>
-          <%= f.submit :create, label: "Criar", class: 'btn-medium' %>
+  <div data-controller="medication-order">
+    <h2>Reserve um medicamento:</h2>
+
+    <div class="search-bar d-flex mt-4 mb-3">
+      <div class="form-search col-6">
+        <%= form_tag medications_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Digite o nome do medicamento ou princípio ativo"%>
+      </div>
+      <div class="search-button">
+          <%= submit_tag "Procurar", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
+
+    <%= simple_form_for [ @medication_order ] do |f| %>
+      <span>Medicamento:</span>
+      <%= f.input :medication_id, label: false, class: "form-control form-control-lg", as: :hidden %>
+      <%= f.input :units, label: "Nº de comprimidos:", class: "form-control form-control-lg" %>
+      <%= f.submit :create, label: "Criar", class: 'btn-medium' %>
+    <% end %>
   </div>
+
+  <h5 class="mt-5">Unidades mais próximas a você: </h5>
+  <div style="width: 100%; height: 400px;"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
 </div>
