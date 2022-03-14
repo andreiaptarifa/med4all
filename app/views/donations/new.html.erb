@@ -1,22 +1,25 @@
 <div class="container mt-5">
   <h1>Nova doação</h1>
-<div data-controller="display-results">
+<div data-controller="display-results" data-display-results-position-value="beforeend">
   <div class="search-bar d-flex mt-4 mb-3">
       <div class="form-search col-6">
-        <%= form_tag medications_path, method: :get do %>
-          <%= text_field_tag :query,
-            params[:query],
+        <%= form_for :query, url: medications_path, method: :get, remote: true,
+                                       data: {
+                                          display_results_target: "form",
+                                          action: "submit->display-results#search"
+                                          } do |f| %>
+          <%= f.text_field :query,
             class: "form-control",
-            placeholder: "Digite o nome do medicamento ou princípio ativo"%>
-      </div>
+            placeholder: "Digite o nome do medicamento ou princípio ativo", data: { display_results_target: "input" }%>
       <div class="search-button">
-          <%= submit_tag "Procurar", class: "btn btn-primary" %>
-        <% end %>
+          <%= f.submit "Procurar", class: "btn btn-primary"%>
+      </div>
+      <% end %>
       </div>
   </div>
 
   <%= simple_form_for [@donation] do |f|%>
-      <span>Nome do medicamento:</span>
+      <span data-display-results-target="results">Nome do medicamento:</span>
       <%= f.input :medication_id, :label => false , as: :hidden %>
       <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
       <%= f.input :expiry_date, :label => "Data de validade", class:'d-none' %>
