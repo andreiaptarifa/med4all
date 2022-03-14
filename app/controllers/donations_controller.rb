@@ -3,9 +3,6 @@ class DonationsController < ApplicationController
 
   def new
     @donation = Donation.new
-    # if params[:]
-    #   @pharmacy = @pharmacies.where()
-    # end
   end
 
   def create
@@ -16,8 +13,7 @@ class DonationsController < ApplicationController
     # @pharmacy = Pharmacy.find(params[:pharmacy_id])
     # @donation.pharmacy = @pharmacy
     if @donation.save
-      redirect_to donations_path, notice: "Sua doação foi criada e será encaminhada para #{@donation.pharmacy.pharmacy_name}. Obrigado, sua doação ajuda a salvar vidas!
-      "
+      redirect_to donations_path, notice: "Sua doação foi criada e será encaminhada para #{@donation.pharmacy.pharmacy_name}. Obrigado, sua doação ajuda a salvar vidas!"
       # redirect_to root_path
     else
       render :new
