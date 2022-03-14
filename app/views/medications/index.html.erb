@@ -4,9 +4,9 @@
     <div class="row justify-content-center">
       <div class="col-sm-8">
         <div id="medications">
-          <% @medications.each do |medication| %>
-            <h4><%= medication.active_substance %></h4>
-            <p><%= medication.name_and_concentration %></p>
+
+          <% @medications.each do |med| %>
+            <%= render 'medication', medication: med %>
           <% end %>
         </div>
       </div>
