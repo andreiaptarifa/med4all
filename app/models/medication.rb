@@ -1,8 +1,9 @@
 class Medication < ApplicationRecord
   include PgSearch::Model
-  multisearchable against: [ :commercial_name, :active_substance ],
+  pg_search_scope :search_by_name_or_substance,
+    against: [ :commercial_name, :active_substance ],
     using: {
-      tsearch: { prefix: true}
+      tsearch: { prefix: true }
     }
 
   def add_keywords_to_profile(user)
