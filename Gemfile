@@ -25,8 +25,12 @@ gem 'jbuilder', '~> 2.7'
 # Installing Devise gem
 gem 'devise'
 
+
 # Installing geocoder gem:
 gem "geocoder"
+
+# PG Search Gem:
+gem 'pg_search', '~> 2.3.0'
 
 
 # Use Active Storage variant

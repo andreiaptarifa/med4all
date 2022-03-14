@@ -1,4 +1,9 @@
 class Medication < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: [ :commercial_name, :active_substance ],
+    using: {
+      tsearch: { prefix: true}
+    }
 
   def add_keywords_to_profile(user)
     io = open(user.resume_pdf.to_s)
