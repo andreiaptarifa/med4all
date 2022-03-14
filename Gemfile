@@ -32,6 +32,10 @@ gem "geocoder"
 # PG Search Gem:
 gem 'pg_search', '~> 2.3.0'
 
+# Turbolink gem:
+gem "turbolinks_render"
+
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

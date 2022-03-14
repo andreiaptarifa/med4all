@@ -3,6 +3,15 @@ class DonationsController < ApplicationController
 
   def new
     @donation = Donation.new
+    @pharmacies = Pharmacy.all
+    @markers = @pharmacies.geocoded.map do |pharmacy|
+      {
+        lat: pharmacy.latitude,
+        long: pharmacy.longitude,
+        info_window: render_to_string(partial: "pharmacies/info_window", locals: { pharmacy: pharmacy }),
+        image_url: helpers.asset_url("/assets/images/hospital-icon.png")
+      }
+    end
   end
 
   def create
@@ -21,7 +30,7 @@ class DonationsController < ApplicationController
   end
 
   def index
-    @donations = Donation.where(user_id: params[current_user.id])
+    @donations = Donation.where(user_id: current_user.id)
   end
 
   def show
