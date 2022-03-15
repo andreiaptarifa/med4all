@@ -6,8 +6,8 @@ class PharmaciesController < ApplicationController
       {
         lat: pharmacy.latitude,
         long: pharmacy.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { pharmacy: pharmacy }),
-        image_url: helpers.asset_url("/assets/images/hospital-icon.png")
+        info_window: render_to_string(partial: "info_window", locals: { pharmacy: pharmacy })
+        # image_url: helpers.asset_url("/assets/images/hospital-icon.png")
       }
     end
   end
