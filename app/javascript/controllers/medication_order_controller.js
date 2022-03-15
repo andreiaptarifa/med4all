@@ -10,9 +10,11 @@ export default class extends Controller {
 
   search(event) {
     event.preventDefault()
-    console.log(this.inputTarget)
+    console.log(this.inputTarget.value)
 
-    fetch(this.formTarget.action, {
+    const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
+
+    fetch(url, {
       method: "get",
       headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() },
     })

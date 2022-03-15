@@ -1,6 +1,6 @@
 class MedicationOrdersController < ApplicationController
   def index
-    @medication_orders = MedicationOrder.where(user_id: params[current_user.id])
+    @medication_orders = MedicationOrder.where(user_id: current_user.id)
   end
 
   def new
@@ -19,13 +19,13 @@ class MedicationOrdersController < ApplicationController
   def create
     @medication_order = MedicationOrder.new(medication_order_params)
 
+    @medication_order.user = current_user
     # @medication = Medication.find(params[:medication_id])
-    # @medication_order.medication = @medication
+    @medication_order.medication = Medication.find(params[:medication_order][:medication_id])
     # @pharmacy = Pharmacy.find(params[:pharmacy_id])
-    # @medication_order.pharmacy = @pharmacy
+    @medication_order.pharmacy = Pharmacy.first
 
     # if user type for médico, linkar com um outro id de paciente, por meio de prescription. Else, usar o current_user
-    @medication_order.user = current_user
 
     if @medication_order.save
       redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
