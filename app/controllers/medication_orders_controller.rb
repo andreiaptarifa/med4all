@@ -5,8 +5,8 @@ class MedicationOrdersController < ApplicationController
 
   def new
     @medication_order = MedicationOrder.new
-    @pharmacies = Pharmacy.all
-    @markers = @pharmacies.geocoded.map do |pharmacy|
+    @pharmacies = Pharmacy.near('Rua Jericó, 193, São Paulo', 5)
+    @markers = @pharmacies.map do |pharmacy|
       {
         lat: pharmacy.latitude,
         long: pharmacy.longitude,
@@ -23,7 +23,7 @@ class MedicationOrdersController < ApplicationController
     # @medication = Medication.find(params[:medication_id])
     @medication_order.medication = Medication.find(params[:medication_order][:medication_id])
     # @pharmacy = Pharmacy.find(params[:pharmacy_id])
-    @medication_order.pharmacy = Pharmacy.first
+    @medication_order.pharmacy = Pharmacy.find(params[:medication_order][:pharmacy_id])
 
     # if user type for médico, linkar com um outro id de paciente, por meio de prescription. Else, usar o current_user
 
