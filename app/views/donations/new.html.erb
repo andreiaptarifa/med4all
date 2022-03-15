@@ -10,7 +10,7 @@
           placeholder: "Digite o nome do medicamento ou princípio ativo"%>
     </div>
     <div class="search-button">
-        <%= submit_tag "Procurar", class: "btn btn-primary" %>
+        <%= submit_tag "Procurar", class: "btn-medium" %>
       <% end %>
     </div>
 </div>
@@ -21,7 +21,7 @@
     <%= f.input :expiry_date, :label => "Data de validade", class:'d-none' %>
     <%= f.association :medication, collection: Medication.all.order(:commercial_name), label_method: :name_and_concentration %>
     <%= f.association :pharmacy, collection: Pharmacy.all.order(:pharmacy_name), label_method: :pharmacy_name %>
-    <%= f.button :submit, :label => "Doar", class: 'btn btn-primary mb-5' %>
+    <%= f.button :submit, :label => "Doar", class: 'btn-medium' %>
 <% end %>
 
 <h5>Unidades mais próximas a você: </h5>

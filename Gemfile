@@ -32,6 +32,9 @@ gem "geocoder"
 # PG Search Gem:
 gem 'pg_search', '~> 2.3.0'
 
+# Cloudinary
+gem 'dotenv-rails', groups: [:development, :test]
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
