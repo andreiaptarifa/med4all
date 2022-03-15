@@ -1,7 +1,9 @@
-<div class="container mt-5">
-  <h1>Remédio do Bem</h1>
-  <div class= "row">
-    <%= link_to "Doar meus remédios", new_donation_path%>
-    <%= link_to "Preciso de remédios", new_medication_order_path %>
+<div class="container mt-5 text-center">
+  <div class= "row button-section">
+  <%= render 'animated' %>
+    <%= link_to "Doar meus remédios", new_donation_path, class:"btn-home" %>
+  </div>
+  <div class= "row button-section">
+    <%= link_to "Preciso de remédios", new_medication_order_path, class:"btn-home" %>
   </div>
 <div>

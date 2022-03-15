@@ -3,8 +3,8 @@ class DonationsController < ApplicationController
 
   def new
     @donation = Donation.new
-    @pharmacies = Pharmacy.all
-    @markers = @pharmacies.geocoded.map do |pharmacy|
+    @pharmacies = Pharmacy.near('Rua Jericó, 193, São Paulo', 3)
+    @markers = @pharmacies.map do |pharmacy|
       {
         lat: pharmacy.latitude,
         long: pharmacy.longitude,
@@ -20,8 +20,7 @@ class DonationsController < ApplicationController
     # @donation.medication = @medication
     @donation.user = current_user
     @donation.medication = Medication.find(params[:donation][:medication_id])
-    # @pharmacy = Pharmacy.find(params[:pharmacy_id])
-    @donation.pharmacy = Pharmacy.first
+    @donation.pharmacy = Pharmacy.find(params[:donation][:pharmacy_id])
     if @donation.save
       redirect_to donations_path, notice: "Sua doação foi criada e será encaminhada para #{@donation.pharmacy.pharmacy_name}. Obrigado, sua doação ajuda a salvar vidas!"
       # redirect_to root_path
