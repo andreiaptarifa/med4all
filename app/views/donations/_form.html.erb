@@ -3,5 +3,5 @@
   <%= f.input :expiry_date %>
   <%= f.association :medication, collection: Medication.all.order(:commercial_name), label_method: :name_and_concentration %>
   <%= f.association :pharmacy, collection: Pharmacy.all.order(:pharmacy_name), label_method: :pharmacy_name %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= f.button :submit, class: 'btn-medium' %>
 <% end %>
