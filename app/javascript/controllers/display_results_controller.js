@@ -17,7 +17,9 @@ export default class extends Controller {
     event.preventDefault()
     console.log(this.inputTarget.value)
 
-    fetch(this.formTarget.action, {
+    const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
+
+    fetch(url, {
       method: "get",
       headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() },
     })
@@ -31,16 +33,4 @@ export default class extends Controller {
       })
   }
 
-  // search(event) {
-  //   event.preventDefault()
-  //   fetch(this.buttonTarget.action, {
-  //     method: "get",
-  //     headers: { "Accept": "application/json", "X-CSRF-Token": csrfToken() },
-  //     body: new FormData(this.buttonTarget) //como capturo os results da minha busca? Sei que não é usando new FormData, mas não sei o que usar
-  //   })
-  //     .then(response => response.json())
-  //     .then((data) => {
-  //       console.log(data)
-  //     })
-  // }
 }
