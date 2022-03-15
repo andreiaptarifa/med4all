@@ -3,6 +3,15 @@ class DonationsController < ApplicationController
 
   def new
     @donation = Donation.new
+    @pharmacies = Pharmacy.all
+    @markers = @pharmacies.geocoded.map do |pharmacy|
+      {
+        lat: pharmacy.latitude,
+        long: pharmacy.longitude,
+        info_window: render_to_string(partial: "pharmacies/info_window", locals: { pharmacy: pharmacy }),
+        image_url: helpers.asset_url("/assets/images/hospital-icon.png")
+      }
+    end
   end
 
   def create
@@ -10,8 +19,9 @@ class DonationsController < ApplicationController
     # @medication = Medication.find(params[:medication_id])
     # @donation.medication = @medication
     @donation.user = current_user
+    @donation.medication = Medication.find(params[:donation][:medication_id])
     # @pharmacy = Pharmacy.find(params[:pharmacy_id])
-    # @donation.pharmacy = @pharmacy
+    @donation.pharmacy = Pharmacy.first
     if @donation.save
       redirect_to donations_path, notice: "Sua doação foi criada e será encaminhada para #{@donation.pharmacy.pharmacy_name}. Obrigado, sua doação ajuda a salvar vidas!"
       # redirect_to root_path
@@ -31,7 +41,7 @@ class DonationsController < ApplicationController
   private
 
   def donations_params
-    params.require(:donation).permit(:units, :expiry_date, :medication_id, :pharmacy_id)
+    params.require(:donation).permit(:units, :expiry_date, :pharmacy_id)
   end
 
   def set_donations
