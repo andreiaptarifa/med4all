@@ -1,2 +1,2 @@
-<h4><%= medication.active_substance %></h4>
-<p><%= medication.name_and_concentration %></p>
+<p><strong><%= medication.active_substance %>: </strong><%= medication.name_and_concentration %><p>
+<%= link_to "Selecionar", new_donation_path(medication_id: medication.id)%>

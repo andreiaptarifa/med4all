@@ -20,7 +20,7 @@
 
   <%= simple_form_for [@donation] do |f|%>
       <span data-display-results-target="results">Nome do medicamento:</span>
-      <%= f.input :medication_id, :label => false , as: :hidden %>
+      <%= f.input :medication_id, :label => false , as: :hidden, input_html: { value: params[:medication_id] } %>
       <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
       <%= f.input :expiry_date, :label => "Data de validade", class:'d-none' %>
       <%= f.button :submit, :label => "Doar", class: 'btn btn-primary mb-5' %>
@@ -33,5 +33,6 @@
   data-mapbox-markers-value="<%= @markers.to_json %>"
   data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+
 
 </div>
