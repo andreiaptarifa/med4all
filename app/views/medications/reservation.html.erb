@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <h1>Medications#reservation</h1>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-8">
+        <div id="medications">
+
+          <% @medications.each do |med| %>
+            <%= render 'medication', medication: med %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

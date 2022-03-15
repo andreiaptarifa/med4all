@@ -1,0 +1,21 @@
+.btn-medium {
+  color: #000;
+  background-color: #CADBF1;
+  border-color: #CADBF1;
+  width: 300px;
+  margin: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 10px;;
+}
+
+.btn-medium:hover {
+  text-decoration: none;
+  background-color: rgb(34, 45, 104);
+  color: #fff;
+}
+
+.button-section {
+  display: flex;
+  justify-content: center;
+}
