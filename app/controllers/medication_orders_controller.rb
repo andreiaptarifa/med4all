@@ -5,6 +5,15 @@ class MedicationOrdersController < ApplicationController
 
   def new
     @medication_order = MedicationOrder.new
+    @pharmacies = Pharmacy.all
+    @markers = @pharmacies.geocoded.map do |pharmacy|
+      {
+        lat: pharmacy.latitude,
+        long: pharmacy.longitude,
+        info_window: render_to_string(partial: "pharmacies/info_window", locals: { pharmacy: pharmacy }),
+        image_url: helpers.asset_url("/assets/images/hospital-icon.png")
+      }
+    end
   end
 
   def create
@@ -19,9 +28,9 @@ class MedicationOrdersController < ApplicationController
     @medication_order.user = current_user
 
     if @medication_order.save
-      redirect_to medication_order_path(@medication_order)
+      redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
     else
-      render 'new'
+      render :new
     end
   end
 
