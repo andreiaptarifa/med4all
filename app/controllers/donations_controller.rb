@@ -3,7 +3,7 @@ class DonationsController < ApplicationController
 
   def new
     @donation = Donation.new
-    @pharmacies = Pharmacy.near('Rua Jericó, 193, São Paulo', 3)
+    @pharmacies = Pharmacy.near('Rua Jericó, 193, São Paulo', 5000)
     @markers = @pharmacies.map do |pharmacy|
       {
         lat: pharmacy.latitude,

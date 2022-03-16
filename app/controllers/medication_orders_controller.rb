@@ -48,6 +48,7 @@ class MedicationOrdersController < ApplicationController
         render :new
       end
     else
+      # flash.now[:notice] = "Remédio indisponível na quantidade solicitada"
       redirect_to medication_orders_path, notice: "Remédio indisponível na quantidade solicitada"
     end
   end
