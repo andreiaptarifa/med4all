@@ -9,7 +9,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   GENDER = ['Feminino', 'Masculino', 'Outro']
-  USER_TYPE = ['Doador', 'Paciente', 'Médico']
+  USER_TYPE = ['Doador', 'Paciente']
 
   has_one_attached :photo
   # endereço, latitude/long no model
