@@ -30,7 +30,7 @@ class MedicationOrdersController < ApplicationController
     # if user type for médico, linkar com um outro id de paciente, por meio de prescription. Else, usar o current_user
 
     if @medication_order.save
-      redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
+      redirect_to medication_orders_path, notice: "Você recebeu um SMS de confirmação no número #{current_user.cellphone} e tem 24 horas para retirar seu remédio"
     else
       render :new
     end

@@ -28,6 +28,9 @@ gem 'devise'
 # Simple Calendar gem
 # gem "simple_calendar", "~> 2.4"
 
+# Twilio gem:
+gem 'twilio-ruby'
+
 # Installing geocoder gem:
 gem "geocoder"
 

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/messages/new', to: 'messages#new'
+  post '/messages', to: 'messages#create'
   get 'pharmacies/index'
 
   get 'medications/index'
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
   resources :donations, only: %i[new create index show]
   resources :pharmacies, only: :index
   resources :medications, only: :index
-  
+
   get 'medications/reservation', to: 'medications#reservation'
 
 end
