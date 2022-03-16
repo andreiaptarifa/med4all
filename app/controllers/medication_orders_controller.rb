@@ -5,7 +5,9 @@ class MedicationOrdersController < ApplicationController
 
   def new
     @medication_order = MedicationOrder.new
-    @pharmacies = Pharmacy.near('Rua Jericó, 193, São Paulo', 5)
+    @medication_order.user = current_user
+    @address = "#{current_user.street} #{current_user.number}, #{current_user.city}"
+    @pharmacies = Pharmacy.near(@address, 5)
     @markers = @pharmacies.map do |pharmacy|
       {
         lat: pharmacy.latitude,
