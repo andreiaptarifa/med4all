@@ -37,7 +37,7 @@ class MedicationOrdersController < ApplicationController
     pharmacy = Pharmacy.find(params[:medication_order][:pharmacy_id])
     @medication_order.pharmacy = pharmacy
     # if user type for médico, linkar com um outro id de paciente, por meio de prescription. Else, usar o current_user
-    inventory = Inventory.find(medication: medication, pharmacy: pharmacy)
+    inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
 
     if inventory.units >= @medication_order.units
       inventory.update!(units: inventory.units -= @medication_order.units)
