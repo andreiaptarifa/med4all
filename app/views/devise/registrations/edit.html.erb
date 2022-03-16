@@ -31,6 +31,15 @@
                   hint: "leave it blank if you don't want to change it",
                   required: false,
                   collection: User::USER_TYPE %>
+      <%= f.input :street,
+                  hint: "leave it blank if you don't want to change it",
+                  required: false %>
+      <%= f.input :number,
+                  hint: "leave it blank if you don't want to change it",
+                  required: false %>
+      <%= f.input :city,
+                  hint: "leave it blank if you don't want to change it",
+                  required: false %>
       <%= f.input :password,
                   hint: "leave it blank if you don't want to change it",
                   required: false,
