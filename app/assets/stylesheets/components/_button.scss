@@ -1,9 +1,21 @@
 .btn-medium {
-  color: #ffffff;
-  border: 1px solid rgb(137, 176, 174);
-  padding: 6px 12px;
-  border-radius: 50px;
-  font-weight: lighter;
-  opacity: 0.6;
-  background-color: rgba(91, 135, 130, 0.782);
+  color: #000;
+  background-color: #CADBF1;
+  border-color: #CADBF1;
+  width: 300px;
+  margin: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 10px;;
+}
+
+.btn-medium:hover {
+  text-decoration: none;
+  background-color: rgb(34, 45, 104);
+  color: #fff;
+}
+
+.button-section {
+  display: flex;
+  justify-content: center;
 }

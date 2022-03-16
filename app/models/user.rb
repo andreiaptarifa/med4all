@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   has_one_attached :photo
   # endereço, latitude/long no model
-  validates :first_name, :last_name, :gender, :birthday, :user_type, presence: true
+  validates :first_name, :last_name, :gender, :birthday, :user_type, :street, :number, :city, presence: true
   validates :user_type, inclusion: { in: USER_TYPE }
   validates :gender, inclusion: { in: GENDER }
 end
