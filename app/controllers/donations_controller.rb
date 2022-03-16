@@ -16,13 +16,18 @@ class DonationsController < ApplicationController
 
   def create
     @donation = Donation.new(donations_params)
-    # @medication = Medication.find(params[:medication_id])
-    # @donation.medication = @medication
+    medication = Medication.find(params[:donation][:medication_id])
+    pharmacy = Pharmacy.find(params[:donation][:pharmacy_id])
     @donation.user = current_user
-    @donation.medication = Medication.find(params[:donation][:medication_id])
-    @donation.pharmacy = Pharmacy.find(params[:donation][:pharmacy_id])
+    @donation.medication = medication
+    @donation.pharmacy = pharmacy
     if @donation.save
-      raise
+      if Inventory.find_by(medication: medication, pharmacy: pharmacy)
+        inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
+        inventory.update!(units: inventory.units += @donation.units)
+      else
+        Inventory.create(units: @donation.units, medication: medication, pharmacy: pharmacy)
+      end
       redirect_to donations_path, notice: "Sua doação foi criada e será encaminhada para #{@donation.pharmacy.pharmacy_name}. Obrigado, sua doação ajuda a salvar vidas!"
       # redirect_to root_path
     else
@@ -36,11 +41,6 @@ class DonationsController < ApplicationController
 
   def show
     @donation = Donation.find(params[:id])
-  end
-
-  def group_donated_medications
-    # quero agrupar os medications doados por pharmacy e contar quantas doações eu tenho
-    @donated_medications = Donation.where(  : medication.id && pharmacy_id: pharmacy.id)
   end
 
   private

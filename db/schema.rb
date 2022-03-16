@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_16_123802) do
+ActiveRecord::Schema.define(version: 2022_03_16_154205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 2022_03_16_123802) do
     t.index ["medication_id"], name: "index_donations_on_medication_id"
     t.index ["pharmacy_id"], name: "index_donations_on_pharmacy_id"
     t.index ["user_id"], name: "index_donations_on_user_id"
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.integer "units"
+    t.bigint "medication_id", null: false
+    t.bigint "pharmacy_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["medication_id"], name: "index_inventories_on_medication_id"
+    t.index ["pharmacy_id"], name: "index_inventories_on_pharmacy_id"
   end
 
   create_table "medication_orders", force: :cascade do |t|
@@ -131,6 +141,8 @@ ActiveRecord::Schema.define(version: 2022_03_16_123802) do
   add_foreign_key "donations", "medications"
   add_foreign_key "donations", "pharmacies"
   add_foreign_key "donations", "users"
+  add_foreign_key "inventories", "medications"
+  add_foreign_key "inventories", "pharmacies"
   add_foreign_key "medication_orders", "medications"
   add_foreign_key "medication_orders", "pharmacies"
   add_foreign_key "medication_orders", "users"
