@@ -22,6 +22,7 @@ class DonationsController < ApplicationController
     @donation.medication = Medication.find(params[:donation][:medication_id])
     @donation.pharmacy = Pharmacy.find(params[:donation][:pharmacy_id])
     if @donation.save
+      raise
       redirect_to donations_path, notice: "Sua doação foi criada e será encaminhada para #{@donation.pharmacy.pharmacy_name}. Obrigado, sua doação ajuda a salvar vidas!"
       # redirect_to root_path
     else
@@ -35,6 +36,11 @@ class DonationsController < ApplicationController
 
   def show
     @donation = Donation.find(params[:id])
+  end
+
+  def group_donated_medications
+    # quero agrupar os medications doados por pharmacy e contar quantas doações eu tenho
+    @donated_medications = Donation.where(  : medication.id && pharmacy_id: pharmacy.id)
   end
 
   private

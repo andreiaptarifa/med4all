@@ -1,7 +1,7 @@
 class MedicationOrdersController < ApplicationController
   def index
     @medication_orders = MedicationOrder.where(user_id: current_user.id)
-    @
+    # @
   end
 
   def new
@@ -16,6 +16,15 @@ class MedicationOrdersController < ApplicationController
       }
     end
   end
+
+# Pseudocódigo:
+# 1) consultar, com o nome do medicamento/princípio ativo, se existe alguma pharmacy com esse medication_id
+# 2) se houver, calcular:
+    # A) soma de units de donations de determinada medication_id para cara pharmacy_id que tiver
+    # B) soma de units de medication_orders de determinada medication_id para cada pharmacy
+    # Para cada pharmacy, calcular estoque = A - B
+# 3) exibir apenas as pharmacies que possuem estoque > 0
+# 4)(geocoding) exibir a pharmacy com estoque > 0 mais próxima a current_user.address
 
   def create
     @medication_order = MedicationOrder.new(medication_order_params)
