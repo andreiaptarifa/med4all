@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 # Installing Devise gem
 gem 'devise'
 
+# Simple Calendar gem
+# gem "simple_calendar", "~> 2.4"
 
 # Installing geocoder gem:
 gem "geocoder"
