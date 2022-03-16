@@ -16,10 +16,10 @@ class DonationsController < ApplicationController
 
   def create
     @donation = Donation.new(donations_params)
-    medication = Medication.find(params[:donation][:medication_id])
-    pharmacy = Pharmacy.find(params[:donation][:pharmacy_id])
     @donation.user = current_user
+    medication = Medication.find(params[:donation][:medication_id])
     @donation.medication = medication
+    pharmacy = Pharmacy.find(params[:donation][:pharmacy_id])
     @donation.pharmacy = pharmacy
     if @donation.save
       if Inventory.find_by(medication: medication, pharmacy: pharmacy)

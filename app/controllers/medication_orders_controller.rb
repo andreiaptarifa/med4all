@@ -31,16 +31,24 @@ class MedicationOrdersController < ApplicationController
 
     @medication_order.user = current_user
     # @medication = Medication.find(params[:medication_id])
-    @medication_order.medication = Medication.find(params[:medication_order][:medication_id])
+    medication = Medication.find(params[:medication_order][:medication_id])
+    @medication_order.medication = medication
     # @pharmacy = Pharmacy.find(params[:pharmacy_id])
-    @medication_order.pharmacy = Pharmacy.find(params[:medication_order][:pharmacy_id])
-
+    pharmacy = Pharmacy.find(params[:medication_order][:pharmacy_id])
+    @medication_order.pharmacy = pharmacy
     # if user type for médico, linkar com um outro id de paciente, por meio de prescription. Else, usar o current_user
+    inventory = Inventory.find(medication: medication, pharmacy: pharmacy)
 
-    if @medication_order.save
-      redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
+    if inventory.units >= @medication_order.units
+      inventory.update!(units: inventory.units -= @medication_order.units)
+      @medication_order.save
+      if @medication_order.save
+        redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to medication_orders_path, notice: "Remédio indisponível na quantidade solicitada"
     end
   end
 
