@@ -13,7 +13,9 @@
                   required: true,
                   collection: User::GENDER %>
       <%= f.input :birthday,
-                  required: true %>
+                  as: :string,
+                  required: true,
+                  input_html: {class: "datepicker"} %>
       <%= f.input :cellphone %>
       <%= f.input :cpf %>
       <%= f.input :user_type,
