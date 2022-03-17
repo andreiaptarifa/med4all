@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # get '/messages/new', to: 'messages#new'
+  # post '/messages', to: 'messages#create'
   get 'pharmacies/index'
 
   get 'medications/index'
