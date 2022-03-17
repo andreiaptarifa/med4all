@@ -23,7 +23,6 @@ class DonationsController < ApplicationController
     @donation.pharmacy = pharmacy
     if @donation.save
       if Inventory.find_by(medication: medication, pharmacy: pharmacy)
-        raise
         inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
         inventory.update!(units: inventory.units += @donation.units)
       else
