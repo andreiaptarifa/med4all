@@ -25,6 +25,26 @@ class MedicationOrdersController < ApplicationController
     @medication_order.medication = medication
 
     @medication_order.user = current_user
+
+    # @medication = Medication.find(params[:medication_id])
+    @medication_order.medication = Medication.find(params[:medication_order][:medication_id])
+    # @pharmacy = Pharmacy.find(params[:pharmacy_id])
+    @medication_order.pharmacy = Pharmacy.find(params[:medication_order][:pharmacy_id])
+
+    # if user type for médico, linkar com um outro id de paciente, por meio de prescription. Else, usar o current_user
+
+    if @medication_order.save
+      account_sid = ENV['TWILIO_ACCOUNT_SID']
+      auth_token = ENV['TWILIO_AUTH_TOKEN']
+      @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+      @client.messages.create(
+        from: '+18548423976',
+        to: '+5517981537359',
+        body: 'Você pode retirar seu remédio!'
+      )
+      redirect_to medication_orders_path, notice: "Você recebeu um SMS de confirmação no número #{current_user.cellphone} e tem 24 horas para retirar seu remédio"
+
     # @address = "#{current_user.street} #{current_user.number}, #{current_user.city}"
     inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
     # @pharmacies = Pharmacy.near(@address, 10)
@@ -37,6 +57,7 @@ class MedicationOrdersController < ApplicationController
       else
         render :new
       end
+
     else
       redirect_to medication_orders_path, alert: "Remédio indisponível na quantidade solicitada"
     end
