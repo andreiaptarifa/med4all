@@ -2,20 +2,46 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
+  height: 100vh;
+
+  .banner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  h1 {
+    width: 50%;
+    margin: 0;
+    color: #54bebc;
+    font-size: 50px;
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  p {
+    width: 50%;
+    font-size: 25px;
+    color: rgb(185, 181, 181);
+  }
 
 }
 
-.banner h1 {
-  margin: 0;
+.btn-login {
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.banner p {
+  background-color: #ee6780;
+  padding: 10px 20px;
+  border-radius: 50px;
+  width: 20%;
+  font-weight: 700;
   font-size: 20px;
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+
+  &:hover {
+    background-color: #943f4e;
+    color: white;
+  }
 }
