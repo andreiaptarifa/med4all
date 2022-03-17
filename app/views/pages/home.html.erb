@@ -1,34 +1,4 @@
 
-<div class="container mt-5">
-    <%#= render 'animated' %>
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-      <div class="container">
-        <h1><strong>Nós ajudamos pacientes do SUS</h1></strong>
-        <h1>A terem o medicamento que precisam</h1>
-        <a class="btn btn-flat" href="#"></a>
-      </div>
-    </div>
-
-    <div class="info-cards">
-      <div class="card-category" >
-      <h2><%= Donation.count(:units) %> remédios doados</h2>
-      </div>
-      <div class="card-category" >
-      <h2><%= MedicationOrder.count %> pacientes do SUS atendidos</h2>
-      </div>
-      <div class="card-category" >
-      <h2><%= Donation.count(:pharmacy_id) %> postos de saúde parceiros</h2>
-      </div>
-    </div>
-
-  <div class= "row button-section">
-    <%= link_to "Doar meus remédios", new_donation_path, class:"btn-home" %>
-  </div>
-  <div class= "row button-section">
-    <%= link_to "Preciso de remédios", new_medication_order_path, class:"btn-home" %>
-  </div>
-</div>
-
 <% if current_user&.donations.present? %>
   <%= render "donorhome" %>
 <% else %>
