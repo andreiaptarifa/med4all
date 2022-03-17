@@ -5,8 +5,8 @@ class MedicationOrdersController < ApplicationController
 
   def new
     @medication_order = MedicationOrder.new
-    if params[:medication_id]
-      @inventories = Inventory.where(medication: Medication.find(params[:medication_id]))
+    if params[:medication_id] && params[:units]
+      @inventories = Inventory.where(medication: Medication.find(params[:medication_id])).where('units >= ?', params[:units])
       @pharmacies = @inventories.map { |inventory| inventory.pharmacy }
       @markers = @pharmacies.map do |pharmacy|
         {
@@ -22,24 +22,34 @@ class MedicationOrdersController < ApplicationController
   def create
     @medication_order = MedicationOrder.new(medication_order_params)
     medication = Medication.find(params[:medication_order][:medication_id])
+    units = params[:medication_order][:units]
+    pharmacy = Pharmacy.find(params[:medication_order][:pharmacy_id])
     @medication_order.medication = medication
-
     @medication_order.user = current_user
-    # @address = "#{current_user.street} #{current_user.number}, #{current_user.city}"
-    inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
+    @medication_order.units = units
+    @medication_order.pharmacy = pharmacy
+    if @medication_order.save
+      inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
+      inventory.units -= units.to_i
+      inventory.save!
+      redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
+    else
+      render :new
+    end
+    # inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
     # @pharmacies = Pharmacy.near(@address, 10)
     # pharmacy = @pharmacies[0]
     # @medication_order.pharmacy = pharmacy
-    if inventory.units >= @medication_order.units
-      if @medication_order.save
-        inventory.update!(units: inventory.units -= @medication_order.units)
-        redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
-      else
-        render :new
-      end
-    else
-      redirect_to medication_orders_path, alert: "Remédio indisponível na quantidade solicitada"
-    end
+  #   if inventory.units >= @medication_order.units
+  #     if @medication_order.save
+  #       inventory.update!(units: inventory.units -= @medication_order.units)
+  #       redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
+  #     else
+  #       render :new
+  #     end
+  #   else
+  #     redirect_to medication_orders_path, alert: "Remédio indisponível na quantidade solicitada"
+  #   end
   end
 
   def show
