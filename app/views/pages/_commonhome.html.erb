@@ -1,0 +1,40 @@
+
+  <%#= render 'animated' %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(https://res.cloudinary.com/deiatarifa/image/upload/v1647538765/med4all/image-bg_afzy2i.png);">
+    <div class="container banner-container">
+      <h1>Remédio do Bem</h1>
+      <p>Nós ajudamos pacientes do SUS a terem o medicamento que precisam</p>
+      <a class="btn-login" href="#">Login</a>
+    </div>
+  </div>
+
+  <div class="info-cards">
+    <div class="card-category" >
+    <h2><%= Donation.count(:units) %> remédios doados</h2>
+    </div>
+    <div class="card-category" >
+    <h2><%= MedicationOrder.count %> pacientes do SUS atendidos</h2>
+    </div>
+    <div class="card-category" >
+    <h2><%= Donation.count(:pharmacy_id) %> postos de saúde parceiros</h2>
+    </div>
+  </div>
+
+<div class= "row button-section">
+  <%= link_to "Doar meus remédios", new_donation_path, class:"btn-home" %>
+</div>
+<div class= "row button-section">
+  <%= link_to "Preciso de remédios", new_medication_order_path, class:"btn-home" %>
+</div>
+
+
+<%#
+<div class="container mt-5 text-center">
+  <div class= "row button-section">
+  <%= render 'animated' %>
+    <%#= link_to "Doar meus remédios", new_donation_path, class:"btn-home" %>
+    <%# </div> %>
+  <%# <div class= "row button-section"> %>
+    <%#= link_to "Preciso de remédios", new_medication_order_path, class:"btn-home" %>
+  <%# </div>
+<div> %>

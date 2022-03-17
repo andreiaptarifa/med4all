@@ -1,0 +1,6 @@
+<% inventories.each do |inventory| %>
+      <%= inventory.pharmacy.pharmacy_name %>
+      <%= inventory.pharmacy.pharmacy_address %>
+      <p>unidades: <%= inventory.units %><%= link_to "Selecionar" %></p>
+
+<% end %>

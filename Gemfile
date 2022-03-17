@@ -28,8 +28,12 @@ gem 'devise'
 # Simple Calendar gem
 # gem "simple_calendar", "~> 2.4"
 
+
 # Twilio gem:
 gem 'twilio-ruby'
+
+# QR Code
+gem "rqrcode", "~> 2.0"
 
 # Installing geocoder gem:
 gem "geocoder"
