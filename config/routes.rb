@@ -9,7 +9,12 @@ Rails.application.routes.draw do
   resources :donations, only: %i[new create index show]
   resources :pharmacies, only: :index
   resources :medications, only: :index
-  
+
   get 'medications/reservation', to: 'medications#reservation'
+
+  controller :pages do
+    get :qr_code_generator
+    get :qr_code_download
+  end
 
 end

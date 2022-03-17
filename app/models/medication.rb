@@ -1,4 +1,6 @@
 class Medication < ApplicationRecord
+  # validates :commercial_name, presence: true, uniqueness: { scope: :concentration }
+
   include PgSearch::Model
     pg_search_scope :search_by_name_or_substance,
       against: [ :commercial_name, :active_substance ],
