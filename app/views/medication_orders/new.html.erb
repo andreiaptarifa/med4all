@@ -24,25 +24,31 @@
       </div>
     </div>
 
-    <%= simple_form_for @medication_order, html: { data: { display_results_target: "medications"} } do |f| %>
-      <span data-display-orders-target="results">Medicamentos Disponíveis:</span>
-      <%= f.input :medication_id, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:medication_id] } %>
-      <%= f.input :units, label: "Nº de comprimidos:", class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:units] } %>
-      <%= f.input :qr_code, as: :hidden, input_html: { value: "Reserva para: #{current_user.first_name.capitalize} #{current_user.last_name.capitalize} - Nº da Reserva: #{rand(1000..3000)}" } %>
-      <%= f.submit "Procurar", class: 'btn-medium' %>
-    <% end %>
+    <div>
+      <span data-display-orders-target="results" class="d-none"><strong>Selecione seu medicamento:</strong></span>
+      <% if params[:medication_id] %>
+        <% if @pharmacies.count.positive? %>
+          <%= simple_form_for @medication_order, html: { data: { display_orders_target: "medications"} }, class:"d-none" do |f| %>
+            <%= f.input :medication_id, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:medication_id] } %>
+            <%= f.input :units, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:units] } %>
+            <%= f.input :qr_code, as: :hidden, input_html: { value: "Reserva para: #{current_user.first_name.capitalize} #{current_user.last_name.capitalize} - Nº da Reserva: #{rand(1000..3000)}" } %>
+            <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies, label_method: :pharmacy_name %>
+            <%= f.submit "Reservar", class: 'btn-medium' %>
+          <% end %>
+        <% else %>
+          <p>Não temos esse medicamento</p>
+        <% end %>
+      <% end %>
+    </div>
 
   </div>
-  <% if @markers %>
+  <% if @markers && @markers.count.positive? %>
     <h5 class="mt-5">Unidades com o medicamento disponível: </h5>
     <div class="d-flex justify-content">
-      <div style="width: 50%; height: 400px;"
+      <div style="width: 100%; height: 400px;"
         data-controller="mapbox"
         data-mapbox-markers-value="<%= @markers.to_json %>"
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-      <div class="mx-4 my-4">
-        <%= render 'card', pharmacies: @pharmacies, inventories: @inventories%>
       </div>
     </div>
   <% end %>
