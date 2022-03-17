@@ -27,15 +27,16 @@
       <%= f.button :submit, :label => "Doar", class: 'btn btn-primary mb-5' %>
   <% end %>
 </div>
-
-<h5>Unidades mais próximas a você: </h5>
-<div class="container d-flex justify-content-around">
-  <div style="width: 100%; height: 400px;"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    class="col-6 ml-2">
+<% if @markers %>
+  <h5>Unidades mais próximas a você: </h5>
+  <div class="container d-flex justify-content-around">
+    <div style="width: 100%; height: 400px;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      class="col-6 ml-2">
+    </div>
   </div>
-</div>
+<% end %> 
 
 </div>
