@@ -25,10 +25,10 @@
     </div>
 
     <%= simple_form_for @medication_order, html: { data: { display_results_target: "medications"} } do |f| %>
-      <span data-display-results-target="results">Medicamentos Disponíveis:</span>
+      <span data-display-orders-target="results">Medicamentos Disponíveis:</span>
       <%= f.input :medication_id, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:medication_id] } %>
       <%= f.input :units, label: "Nº de comprimidos:", class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:units] } %>
-      <%= f.input :qr_code, as: :hidden, input_html: { value: "Reserva para: #{current_user.first_name.capitalize} #{current_user.last_name.capitalize} - Nº da Reserva: #{@medication_order.id}" } %>
+      <%= f.input :qr_code, as: :hidden, input_html: { value: "Reserva para: #{current_user.first_name.capitalize} #{current_user.last_name.capitalize} - Nº da Reserva: #{rand(1000..3000)}" } %>
       <%= f.submit "Procurar", class: 'btn-medium' %>
     <% end %>
 
