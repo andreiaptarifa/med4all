@@ -27,6 +27,36 @@
   }
 }
 
+
+.card-medication {
+  background-color: #ebebeb;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px #d8d8d8;
+  width: 60%;
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    margin: 0;
+  }
+
+  .btn-medication {
+    background-color: #54bebc;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+  }
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .info-cards {
