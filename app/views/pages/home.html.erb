@@ -1,3 +1,4 @@
+
 <div class="container mt-5">
     <%#= render 'animated' %>
     <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
@@ -27,3 +28,9 @@
     <%= link_to "Preciso de remédios", new_medication_order_path, class:"btn-home" %>
   </div>
 </div>
+
+<% if current_user&.donations.present? %>
+  <%= render "donorhome" %>
+<% else %>
+  <%= render "commonhome" %>
+<% end %>

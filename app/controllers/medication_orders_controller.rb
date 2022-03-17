@@ -1,13 +1,23 @@
 class MedicationOrdersController < ApplicationController
   def index
     @medication_orders = MedicationOrder.where(user_id: current_user.id)
+
   end
 
   def new
     @medication_order = MedicationOrder.new
+  end
+
+  def create
+    @medication_order = MedicationOrder.new(medication_order_params)
+
     @medication_order.user = current_user
-    @address = "#{current_user.street} #{current_user.number}, #{current_user.city}"
-    @pharmacies = Pharmacy.near(@address, 10)
+    medication = Medication.find(params[:medication_order][:medication_id])
+    @medication_order.medication = medication
+    @inventories = Inventory.where(medication: medication)
+    @pharmacies = @inventories.map { |inventory| inventory.pharmacy }
+    # @address = "#{current_user.street} #{current_user.number}, #{current_user.city}"
+    # @pharmacies = Pharmacy.near(@address, 10)
     @markers = @pharmacies.map do |pharmacy|
       {
         lat: pharmacy.latitude,
@@ -16,23 +26,18 @@ class MedicationOrdersController < ApplicationController
         image_url: helpers.asset_url("/assets/images/hospital-icon.png")
       }
     end
-  end
-
-  def create
-    @medication_order = MedicationOrder.new(medication_order_params)
-
-    @medication_order.user = current_user
-    # @medication = Medication.find(params[:medication_id])
-    @medication_order.medication = Medication.find(params[:medication_order][:medication_id])
-    # @pharmacy = Pharmacy.find(params[:pharmacy_id])
-    @medication_order.pharmacy = Pharmacy.find(params[:medication_order][:pharmacy_id])
-
-    # if user type for médico, linkar com um outro id de paciente, por meio de prescription. Else, usar o current_user
-
-    if @medication_order.save
-      redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
+    pharmacy = @pharmacies[0]
+    inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
+    # @medication_order.pharmacy = pharmacy
+    if inventory.units >= @medication_order.units
+      if @medication_order.save
+        inventory.update!(units: inventory.units -= @medication_order.units)
+        redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to medication_orders_path, alert: "Remédio indisponível na quantidade solicitada"
     end
   end
 

@@ -1,37 +1,44 @@
 <div class="container py-5 mt-5">
-  <h2>Reserve um medicamento:</h2>
   <div data-controller="display-results" data-display-results-position-value="beforeend">
-    <div class="search-bar d-flex mt-4 mb-3">
-      <div class="form-search col-6">
-        <%= form_for :query, url: medications_reservation_path, method: :get, remote: true,
-                                      data: {
-                                        display_results_target: "form",
-                                        action: "submit->display-results#search"
-                                        } do |f| %>
-          <%= f.text_field :query,
-            class: "form-control",
-            placeholder: "Digite o nome do medicamento ou princípio ativo", data: { display_results_target: "input" }%>
-      <div class="search-button">
-          <%= f.submit "Procurar", class: "btn btn-primary" %>
-      </div>
-        <% end %>
+    <div data-display-results-target ="search">
+      <h2>Reserve um medicamento:</h2>
+      <div class="search-bar d-flex mt-4 mb-3">
+        <div class="form-search col-6">
+          <%= form_for :query, url: medications_reservation_path, method: :get, remote: true,
+                                        data: {
+                                          display_results_target: "form",
+                                          action: "submit->display-results#search"
+                                          } do |f| %>
+            <%= f.text_field :query,
+              class: "form-control",
+              placeholder: "Digite o nome do medicamento ou princípio ativo", data: { display_results_target: "input" }%>
+            <div class="search-button">
+              <%= f.submit "Procurar", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
 
-    <%= simple_form_for [ @medication_order ] do |f| %>
+    <%= simple_form_for @medication_order, html: { data: { display_results_target: "medications"} } do |f| %>
       <span data-display-results-target="results">Medicamentos Disponíveis:</span>
       <%= f.input :medication_id, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:medication_id] } %>
       <%= f.input :units, label: "Nº de comprimidos:", class: "form-control form-control-lg" %>
-      <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies, label_method: :pharmacy_name %>
-      <%= f.submit :create, label: "Criar", class: 'btn-medium' %>
+      <%= f.submit "Procurar", class: 'btn-medium' %>
     <% end %>
   </div>
-
-  <h5 class="mt-5">Unidades mais próximas a você: </h5>
-  <div style="width: 100%; height: 400px;"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+  <% if @markers %>
+    <h5 class="mt-5">Unidades com o medicamento disponível: </h5>
+    <div class="d-flex justify-content">
+      <div style="width: 50%; height: 400px;"
+        data-controller="mapbox"
+        data-mapbox-markers-value="<%= @markers.to_json %>"
+        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+      <div class="mx-4 my-4">
+        <%= render 'card', pharmacies: @pharmacies, inventories: @inventories%>
+      </div>
+    </div>
+  <% end %>
 
 </div>
