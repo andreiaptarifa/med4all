@@ -29,15 +29,14 @@
   </div>
   <% if @markers %>
     <h5 class="mt-5">Unidades com o medicamento disponível: </h5>
-    <div>
+    <div class="d-flex justify-content">
       <div style="width: 50%; height: 400px;"
         data-controller="mapbox"
         data-mapbox-markers-value="<%= @markers.to_json %>"
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-
-      <div>
-        <%= render 'card', pharmacies: @pharmacies, inventories: @inventories %>
+      <div class="mx-4 my-4">
+        <%= render 'card', pharmacies: @pharmacies, inventories: @inventories%>
       </div>
     </div>
   <% end %>
