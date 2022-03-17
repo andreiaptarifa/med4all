@@ -19,12 +19,18 @@ class DonationsController < ApplicationController
 
   def create
     @donation = Donation.new(donations_params)
-    # @medication = Medication.find(params[:medication_id])
-    # @donation.medication = @medication
     @donation.user = current_user
-    @donation.medication = Medication.find(params[:donation][:medication_id])
-    @donation.pharmacy = Pharmacy.find(params[:donation][:pharmacy_id])
+    medication = Medication.find(params[:donation][:medication_id])
+    @donation.medication = medication
+    pharmacy = Pharmacy.find(params[:donation][:pharmacy_id])
+    @donation.pharmacy = pharmacy
     if @donation.save
+      if Inventory.find_by(medication: medication, pharmacy: pharmacy)
+        inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
+        inventory.update!(units: inventory.units += @donation.units)
+      else
+        Inventory.create(units: @donation.units, medication: medication, pharmacy: pharmacy)
+      end
       redirect_to donations_path, notice: "Sua doação foi criada e será encaminhada para #{@donation.pharmacy.pharmacy_name}. Obrigado, sua doação ajuda a salvar vidas!"
       # redirect_to root_path
     else
