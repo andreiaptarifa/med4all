@@ -26,23 +26,9 @@ class MedicationOrdersController < ApplicationController
         image_url: helpers.asset_url("/assets/images/hospital-icon.png")
       }
     end
-
-  end
-
-  def create
-    @medication_order = MedicationOrder.new(medication_order_params)
-
-    @medication_order.user = current_user
-    # @medication = Medication.find(params[:medication_id])
-    @medication_order.medication = Medication.find(params[:medication_order][:medication_id])
-    # @pharmacy = Pharmacy.find(params[:pharmacy_id])
-    @medication_order.pharmacy = Pharmacy.find(params[:medication_order][:pharmacy_id])
-
-    # if user type for médico, linkar com um outro id de paciente, por meio de prescription. Else, usar o current_user
-
     pharmacy = @pharmacies[0]
     inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
-    # @medication_order.pharmacy = pharmacy
+    @medication_order.pharmacy = pharmacy
     if inventory.units >= @medication_order.units
       if @medication_order.save
         inventory.update!(units: inventory.units -= @medication_order.units)
@@ -62,7 +48,8 @@ class MedicationOrdersController < ApplicationController
       offset: 0,
       color: '000',
       shape_rendering: 'crispEdges',
-      standalone: true
+      standalone: true,
+      module_size: 3
     )
   end
 

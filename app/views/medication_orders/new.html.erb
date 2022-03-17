@@ -24,8 +24,7 @@
       <span data-display-results-target="results">Medicamentos Disponíveis:</span>
       <%= f.input :medication_id, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:medication_id] } %>
       <%= f.input :units, label: "Nº de comprimidos:", class: "form-control form-control-lg" %>
-      <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies, label_method: :pharmacy_name %>
-      <%= f.input :qr_code %>
+      <%= f.input :qr_code, as: :hidden, input_html: { value: "Reserva para: #{current_user.first_name.capitalize} #{current_user.last_name.capitalize} - Nº da Reserva: #{@medication_order.id}" } %>
       <%= f.submit "Procurar", class: 'btn-medium' %>
     <% end %>
   </div>
