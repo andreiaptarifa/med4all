@@ -13,4 +13,9 @@ Rails.application.routes.draw do
 
   get 'medications/reservation', to: 'medications#reservation'
 
+  controller :pages do
+    get :qr_code_generator
+    get :qr_code_download
+  end
+
 end

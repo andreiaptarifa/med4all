@@ -7,10 +7,6 @@ export default class extends Controller {
 
   connect() {
     console.log(this.formTarget.action)
-    // console.log(this.element)
-    // console.log(this.resultsTarget)
-    // console.log(this.formTarget)
-    // console.log('Olar :)')
   }
 
   search(event) {
@@ -29,7 +25,6 @@ export default class extends Controller {
         data.forEach( (med) => {
           this.resultsTarget.insertAdjacentHTML('beforeend', med)
         })
-        // this.resultsTarget.innerHTML = data.inserted_item
       })
   }
 
