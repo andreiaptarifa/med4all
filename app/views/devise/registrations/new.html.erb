@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5" data-controller="flatpickr">
   <h2>Sign up</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -13,7 +13,9 @@
                   required: true,
                   collection: User::GENDER %>
       <%= f.input :birthday,
-                  required: true %>
+                  as: :string,
+                  required: true,
+                  input_html: {class: "datepicker"} %>
       <%= f.input :cellphone %>
       <%= f.input :cpf %>
       <%= f.input :user_type,

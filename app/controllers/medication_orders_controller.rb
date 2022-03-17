@@ -6,19 +6,18 @@ class MedicationOrdersController < ApplicationController
 
   def new
     @medication_order = MedicationOrder.new
-    # @pharmacies = Pharmacy.near('Rua Jericó, 193, São Paulo', 5)
   end
 
   def create
     @medication_order = MedicationOrder.new(medication_order_params)
 
     @medication_order.user = current_user
-    # @medication = Medication.find(params[:medication_id])
     medication = Medication.find(params[:medication_order][:medication_id])
     @medication_order.medication = medication
-    # @medication_order.pharmacy = pharmacy
     @inventories = Inventory.where(medication: medication)
     @pharmacies = @inventories.map { |inventory| inventory.pharmacy }
+    # @address = "#{current_user.street} #{current_user.number}, #{current_user.city}"
+    # @pharmacies = Pharmacy.near(@address, 10)
     @markers = @pharmacies.map do |pharmacy|
       {
         lat: pharmacy.latitude,
@@ -27,7 +26,6 @@ class MedicationOrdersController < ApplicationController
         image_url: helpers.asset_url("/assets/images/hospital-icon.png")
       }
     end
-    # pharmacy = Pharmacy.find(params[:medication_order][:pharmacy_id])
     pharmacy = @pharmacies[0]
     inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
     # @medication_order.pharmacy = pharmacy

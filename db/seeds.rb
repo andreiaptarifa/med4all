@@ -26,7 +26,7 @@ end
 
 medications = []
 
-active_principles.first(15).each do |active_principle|
+active_principles.first(10).each do |active_principle|
   sleep 2
   html_file = URI.open(active_principle).read
   html_doc = Nokogiri::HTML(html_file)
@@ -39,14 +39,15 @@ end
 # puts medications[0]
 puts "--> Até aqui deu certo :D"
 
-medications.first(20).each do |medication|
+medications.uniq.first(10).each do |medication|
+  p medication
   sleep 2
   html_file = URI.open(medication).read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(".new-product-header__top-side.new-product-header__top-side--quantity-ab-test").each do |element|
     active_substance = element.search("div .new-product-header__top-side__top-middle-side__substance-wrapper").first.text,
     commercial_name = element.search(".new-product-header__top-side__top-middle-side__title-wrapper").first.text.strip.split(',')[0].split(/\s*\A\s*(\w+)\s*(\w+)/)[1],
-    concentration = element.search(".new-product-header__top-side__top-middle-side__title-wrapper").first.text.strip.split(',')[0].split(/\s*(\d+\w+)\D\w+/)[1],
+    concentration = element.search(".new-product-header__top-side__top-middle-side__title-wrapper").first.text.strip.split(',')[0].split(/(\d+\w+.\w+)/)[1],
     lab = element.search(".new-product-header__topic.new-product-header__topic--factory .new-product-header__factory-wrapper__text b").text.strip
     if active_substance && commercial_name && concentration && lab
 
@@ -65,25 +66,25 @@ medications.first(20).each do |medication|
 end
 
 
-filepath = "db/data/new_csv.csv"
+# filepath = "db/data/new_csv.csv"
 
-CSV.foreach(filepath, quote_char: "\x00", headers: :first_row) do |row|
-  pharmacy_interior = Pharmacy.new(
-    pharmacy_name: "#{row[1]}",
-    pharmacy_address: "#{row[2]}, #{row[0]}"
-  )
-  pharmacy_interior.save!
-end
+# CSV.foreach(filepath, quote_char: "\x00", headers: :first_row) do |row|
+#   pharmacy_interior = Pharmacy.new(
+#     pharmacy_name: "#{row[1]}",
+#     pharmacy_address: "#{row[2]}, #{row[0]}"
+#   )
+#   pharmacy_interior.save!
+# end
 
-filepath_grandesp = "db/data/unidades_grandesp.csv"
+# filepath_grandesp = "db/data/unidades_grandesp.csv"
 
-CSV.foreach(filepath_grandesp, headers: :first_row) do |row|
- pharmacy_grande = Pharmacy.new(
-    pharmacy_name: "#{row[2]}",
-    pharmacy_address: "#{row[3]}, #{row[1]}"
-  )
-  pharmacy_grande.save!
-end
+# CSV.foreach(filepath_grandesp, headers: :first_row) do |row|
+#  pharmacy_grande = Pharmacy.new(
+#     pharmacy_name: "#{row[2]}",
+#     pharmacy_address: "#{row[3]}, #{row[1]}"
+#   )
+#   pharmacy_grande.save!
+# end
 
 filepath_capital = "db/data/unidades_capital.csv"
 

@@ -1,9 +1,12 @@
 class DonationsController < ApplicationController
   before_action :set_donations, only: [:show]
 
+
   def new
     @donation = Donation.new
-    @pharmacies = Pharmacy.near('Rua Jericó, 193, São Paulo', 50)
+    @donation.user = current_user
+    @address = "#{current_user.street} #{current_user.number}, #{current_user.city}"
+    @pharmacies = Pharmacy.near(@address, 5)
     @markers = @pharmacies.map do |pharmacy|
       {
         lat: pharmacy.latitude,
