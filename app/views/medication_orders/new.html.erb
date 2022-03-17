@@ -23,6 +23,7 @@
       <%= f.input :medication_id, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:medication_id] } %>
       <%= f.input :units, label: "Nº de comprimidos:", class: "form-control form-control-lg" %>
       <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies, label_method: :pharmacy_name %>
+      <%= f.input :qr_code %>
       <%= f.submit :create, label: "Criar", class: 'btn-medium' %>
     <% end %>
   </div>
