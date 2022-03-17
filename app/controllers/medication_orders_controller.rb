@@ -40,7 +40,7 @@ class MedicationOrdersController < ApplicationController
         to: '+5517981537359',
         body: 'Você pode retirar seu remédio!'
       )
-      redirect_to medication_orders_path, notice: "Você recebeu um SMS de confirmação no número #{current_user.cellphone} e tem 24 horas para retirar seu remédio"
+      redirect_to medication_order_path(@medication_order), notice: "Você recebeu um SMS de confirmação no número #{current_user.cellphone} e tem 24 horas para retirar seu remédio"
     else
       render :new
     end
@@ -48,10 +48,18 @@ class MedicationOrdersController < ApplicationController
 
   def show
     @medication_order = MedicationOrder.find(params[:id])
+    @qr_code = RQRCode::QRCode.new(@medication_order.qr_code)
+    @svg = @qr_code.as_svg(
+      offset: 0,
+      color: '000',
+      shape_rendering: 'crispEdges',
+      standalone: true,
+      module_size: 3
+    )
   end
 
   private
   def medication_order_params
-    params.require(:medication_order).permit(:units, :medication_id, :pharmacy_id)
+    params.require(:medication_order).permit(:units, :medication_id, :pharmacy_id, :qr_code)
   end
 end

@@ -236,11 +236,11 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.5)
-    ruby2_keywords (0.0.5)
     rqrcode (2.1.1)
       chunky_png (~> 1.0)
       rqrcode_core (~> 1.0)
     rqrcode_core (1.2.0)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -347,4 +347,4 @@ RUBY VERSION
    ruby 3.0.3p157
 
 BUNDLED WITH
-   2.3.6
+   2.3.5
