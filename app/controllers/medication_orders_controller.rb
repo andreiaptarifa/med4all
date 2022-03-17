@@ -30,6 +30,15 @@ class MedicationOrdersController < ApplicationController
     # if user type for médico, linkar com um outro id de paciente, por meio de prescription. Else, usar o current_user
 
     if @medication_order.save
+      account_sid = ENV['TWILIO_ACCOUNT_SID']
+      auth_token = ENV['TWILIO_AUTH_TOKEN']
+      @client = Twilio::REST::Client.new(account_sid, auth_token)
+
+      @client.messages.create(
+        from: '+18548423976',
+        to: '+5517981537359',
+        body: 'Você pode retirar seu remédio!'
+      )
       redirect_to medication_orders_path, notice: "Você recebeu um SMS de confirmação no número #{current_user.cellphone} e tem 24 horas para retirar seu remédio"
     else
       render :new
