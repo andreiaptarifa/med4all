@@ -22,8 +22,13 @@
       <span data-display-results-target="results">Nome do medicamento:</span>
       <%= f.input :medication_id, :label => false , as: :hidden, input_html: { value: params[:medication_id] } %>
       <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
+<<<<<<< HEAD
       <%= f.input :expiry_date, :label => "Data de validade", class:'d-none', as: :string, required: false, input_html: { class: "datepicker" } %>
       <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies, label_method: :pharmacy_name %>
+=======
+      <%= f.input :expiry_date, :label => "Data de validade", class:'d-none' %>
+      <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies.order(:pharmacy_name), label_method: :pharmacy_name %>
+>>>>>>> master
       <%= f.button :submit, :label => "Doar", class: 'btn btn-primary mb-5' %>
   <% end %>
 </div>

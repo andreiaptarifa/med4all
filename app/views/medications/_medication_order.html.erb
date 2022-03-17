@@ -1,2 +1,2 @@
 <p><strong><%= medication.active_substance %>: </strong><%= medication.name_and_concentration %><p>
-<%= link_to "Selecionar", new_medication_order_path(medication_id: medication.id)%>
+<%= link_to "Selecionar", new_medication_order_path(medication_id: medication.id, units: @units)%>

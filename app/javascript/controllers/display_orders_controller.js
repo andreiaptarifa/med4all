@@ -3,14 +3,14 @@ import { csrfToken } from "@rails/ujs"
 
 
 export default class extends Controller {
-  static targets = ["results", "form", "input"]
+  static targets = ["results", "form", "input", "medications", "units"]
 
   connect() {
   }
 
   search(event) {
     event.preventDefault()
-    const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
+    const url = `${this.formTarget.action}?query=${this.inputTarget.value}&units=${this.unitsTarget.value}`
 
     fetch(url, {
       method: "get",
