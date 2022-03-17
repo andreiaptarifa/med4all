@@ -1,0 +1,15 @@
+<%# <h3>Envie seu SMS</h3>
+​
+<hr>
+​
+<%= form_with(url: '/messages', remote: false) do |form| %>
+  Mensagem: <%= form.text_area :message %><br><br>
+  Número: <%= form.text_field :number %><br><br>
+  <%= form.submit 'Enviar SMS' %>
+<% end %>
+​
+<hr>
+​
+<% if flash[:notice] %>
+  <div><%= flash[:notice] %></div>
+<% end %> %>

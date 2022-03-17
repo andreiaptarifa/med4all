@@ -32,24 +32,18 @@ class MedicationOrdersController < ApplicationController
       inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
       inventory.units -= units.to_i
       inventory.save!
-      redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
+      account_sid = ENV['TWILIO_ACCOUNT_SID']
+      auth_token = ENV['TWILIO_AUTH_TOKEN']
+      @client = Twilio::REST::Client.new(account_sid, auth_token)
+      @client.messages.create(
+        from: '+18548423976',
+        to: '+5517981537359',
+        body: 'Você pode retirar seu remédio!'
+      )
+      redirect_to medication_orders_path, notice: "Você recebeu um SMS de confirmação no número #{current_user.cellphone} e tem 24 horas para retirar seu remédio"
     else
       render :new
     end
-    # inventory = Inventory.find_by(medication: medication, pharmacy: pharmacy)
-    # @pharmacies = Pharmacy.near(@address, 10)
-    # pharmacy = @pharmacies[0]
-    # @medication_order.pharmacy = pharmacy
-  #   if inventory.units >= @medication_order.units
-  #     if @medication_order.save
-  #       inventory.update!(units: inventory.units -= @medication_order.units)
-  #       redirect_to medication_orders_path, notice: "Você tem 24 horas para retirar seu remédio"
-  #     else
-  #       render :new
-  #     end
-  #   else
-  #     redirect_to medication_orders_path, alert: "Remédio indisponível na quantidade solicitada"
-  #   end
   end
 
   def show
@@ -57,7 +51,6 @@ class MedicationOrdersController < ApplicationController
   end
 
   private
-
   def medication_order_params
     params.require(:medication_order).permit(:units, :medication_id, :pharmacy_id)
   end
