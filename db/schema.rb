@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 2022_03_17_022129) do
     t.index ["user_id"], name: "index_donations_on_user_id"
   end
 
+  create_table "inventories", force: :cascade do |t|
+    t.integer "units"
+    t.bigint "medication_id", null: false
+    t.bigint "pharmacy_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["medication_id"], name: "index_inventories_on_medication_id"
+    t.index ["pharmacy_id"], name: "index_inventories_on_pharmacy_id"
+  end
+
   create_table "medication_orders", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "medication_id", null: false
@@ -125,6 +135,8 @@ ActiveRecord::Schema.define(version: 2022_03_17_022129) do
   add_foreign_key "donations", "medications"
   add_foreign_key "donations", "pharmacies"
   add_foreign_key "donations", "users"
+  add_foreign_key "inventories", "medications"
+  add_foreign_key "inventories", "pharmacies"
   add_foreign_key "medication_orders", "medications"
   add_foreign_key "medication_orders", "pharmacies"
   add_foreign_key "medication_orders", "users"
