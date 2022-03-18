@@ -6,7 +6,7 @@ require 'csv'
 MedicationOrder.destroy_all
 Donation.destroy_all
 Inventory.destroy_all
-Pharmacy.destroy_all
+# Pharmacy.destroy_all
 Medication.destroy_all
 
 letters = ("a".."z").to_a
