@@ -1,46 +1,54 @@
-<div class="container py-5 mt-5">
-  <div data-controller="display-orders" data-display-orders-position-value="beforeend">
-    <div data-display-orders-target ="search">
-      <h2>Reserve um medicamento:</h2>
-      <div class="search-bar d-flex mt-4 mb-3">
-        <div class="form-search col-6">
-          <%= form_for :query, url: medications_reservation_path, method: :get, remote: true,
-                                        data: {
-                                          display_orders_target: "form",
-                                          action: "submit->display-orders#search"
-                                          } do |f| %>
-            <%= f.text_field :query,
-              class: "form-control",
-              placeholder: "Digite o nome do medicamento ou princípio ativo", data: { display_orders_target: "input" }%>
-            <%= f.text_field :units,
-              class: "form-control",
-              placeholder: "Digite o n° de comprimidos", data: { display_orders_target: "units" }%>
+<div class="new-container">
+  <div>
+    <div data-controller="display-orders" data-display-orders-position-value="beforeend">
+      <div data-display-orders-target ="search">
+        <h1>Reserve um medicamento:</h1>
+        <div class="search-bar d-flex mt-4 mb-3 justify-content-between">
+          <div class="form-search col-12">
+            <%= form_for :query, url: medications_reservation_path, method: :get, remote: true,
+                                          data: {
+                                            display_orders_target: "form",
+                                            action: "submit->display-orders#search"
+                                            } do |f| %>
+              <div class="d-flex justify-content-between">
+                <%= f.text_field :query,
+                  class: "form-control mx-2",
+                  placeholder: "Digite o nome do medicamento ou princípio ativo",
+                  data: { display_orders_target: "input" }%>
+                <%= f.text_field :units,
+                  class: "form-control mx-2 pill",
+                  placeholder: "Digite o n° de comprimidos",
+                  data: { display_orders_target: "units" }%>
 
-            <div class="search-button">
-              <%= f.submit "Procurar", class: "btn btn-primary" %>
-            </div>
-          <% end %>
+                <div class="search-button">
+                  <%= f.submit "Procurar", class: "btn-principal mx-2" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div>
-      <span data-display-orders-target="results" class="d-none"><strong>Selecione seu medicamento:</strong></span>
-      <% if params[:medication_id] %>
-        <% if @pharmacies.count.positive? %>
-          <%= simple_form_for @medication_order, html: { data: { display_orders_target: "medications"} }, class:"d-none" do |f| %>
-            <%= f.input :medication_id, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:medication_id] } %>
-            <%= f.input :units, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:units] } %>
-            <%= f.input :qr_code, as: :hidden, input_html: { value: "Reserva para: #{current_user.first_name.capitalize} #{current_user.last_name.capitalize} - Nº da Reserva: #{rand(1000..3000)}" } %>
-            <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies, label_method: :pharmacy_name %>
-            <%= f.submit "Reservar", class: 'btn-medium' %>
+    <div id="anchor-text">
+    </div>
+      <div>
+        <span data-display-orders-target="results" class="d-none"><strong>Selecione seu medicamento:</strong></span>
+        <% if params[:medication_id] %>
+          <% if @pharmacies.count.positive? %>
+              <%= simple_form_for @medication_order, html: { data: { display_orders_target: "medications", insert_in_list_target:"pharmacy"} }, class:"d-none" do |f| %>
+                <%= f.input :medication_id, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:medication_id] } %>
+                <%= f.input :units, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:units] } %>
+                <%= f.input :qr_code, as: :hidden, input_html: { value: "Reserva para: #{current_user.first_name.capitalize} #{current_user.last_name.capitalize} - Nº da Reserva: #{rand(1000..3000)}" } %>
+                <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies, label_method: :pharmacy_name %>
+                <%= f.submit "Reservar", class: 'btn-medium' %>
+              <% end %>
+            <% else %>
+              <p>Não temos esse medicamento</p>
+            <% end %>
           <% end %>
-        <% else %>
-          <p>Não temos esse medicamento</p>
-        <% end %>
-      <% end %>
-    </div>
+        </div>
 
+    </div>
   </div>
   <% if @markers && @markers.count.positive? %>
     <h5 class="mt-5">Unidades com o medicamento disponível: </h5>

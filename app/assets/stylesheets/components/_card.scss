@@ -67,6 +67,11 @@
     padding: 10px 20px;
     border-radius: 50px;
     text-decoration: none;
+
+    &:hover {
+      background-color: #347574;
+      color: white;
+    }
   }
 }
 
