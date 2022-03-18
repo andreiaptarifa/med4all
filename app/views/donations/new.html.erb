@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="new-container">
 <h1>Nova doação</h1>
 <div data-controller="display-results" data-display-results-position-value="beforeend">
   <div class="search-bar d-flex mt-4 mb-3">
@@ -11,8 +11,8 @@
           <%= f.text_field :query,
             class: "form-control",
             placeholder: "Digite o nome do medicamento ou princípio ativo", data: { display_results_target: "input" }%>
-      <div class="search-button">
-          <%= f.submit "Procurar", class: "btn-medium"%>
+      <div>
+          <%= f.submit "Procurar", class: "btn-principal"%>
       </div>
       <% end %>
       </div>
@@ -21,19 +21,21 @@
   <div data-controller="flatpickr">
   <%= simple_form_for [@donation] do |f|%>
       <div class="results-medications">
-        <span data-display-results-target="results">Nome do medicamento:</span>
+        <span data-display-results-target="results"><h4>Nome do medicamento:</h4></span>
       </div>
-      <%= f.input :medication_id, :label => false , as: :hidden, input_html: { value: params[:medication_id] } %>
-      <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
-      <%= f.input :expiry_date, label: "Data de validade", as: :string, required: true, input_html: { class: "datepicker d-none" } %>
-      <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies.order(:pharmacy_name), label_method: :pharmacy_name %>
-      <%= f.button :submit, :label => "Doar", class: 'btn btn-primary mb-5' %>
+      <h5>
+        <%= f.input :medication_id, :label => false , as: :hidden, input_html: { value: params[:medication_id] } %>
+        <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
+        <%= f.input :expiry_date, label: "Data de validade", class: "d-none", as: :string, required: true, input_html: { class: "datepicker" } %>
+        <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies.order(:pharmacy_name), label_method: :pharmacy_name %>
+        <%= f.button :submit, "Doar", class: 'btn-principal' %>
+      </h5>
   <% end %>
 
   </div>
 </div>
 <% if @markers %>
-  <h5>Unidades mais próximas a você: </h5>
+  <h4>Unidades mais próximas a você: </h4>
   <div class="container d-flex justify-content-around">
     <div style="width: 100%; height: 400px;"
       data-controller="mapbox"
