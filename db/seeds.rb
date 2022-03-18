@@ -78,6 +78,7 @@ CSV.foreach(filepath, quote_char: "\x00", headers: :first_row) do |row|
   )
   pharmacy_interior.save!
 end
+puts "base interior importada"
 
 filepath_grandesp = "db/data/unidades_grandesp.csv"
 
@@ -88,6 +89,7 @@ CSV.foreach(filepath_grandesp, headers: :first_row) do |row|
   )
   pharmacy_grande.save!
 end
+puts "base grande são paulo importada"
 
 filepath_capital = "db/data/unidades_capital.csv"
 
@@ -98,3 +100,4 @@ CSV.foreach(filepath_capital, headers: :first_row) do |row|
   )
   pharmacy_capital.save!
 end
+puts "base capital importada"
