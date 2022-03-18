@@ -1,23 +1,27 @@
-<div class="container py-5 mt-5">
+<div class="new-container">
   <div>
     <div data-controller="display-orders" data-display-orders-position-value="beforeend">
       <div data-display-orders-target ="search">
-        <h2>Reserve um medicamento:</h2>
-        <div class="search-bar d-flex mt-4 mb-3">
-          <div class="form-search col-10">
+        <h1>Reserve um medicamento:</h1>
+        <div class="search-bar d-flex mt-4 mb-3 justify-content-between">
+          <div class="form-search col-12">
             <%= form_for :query, url: medications_reservation_path, method: :get, remote: true,
                                           data: {
                                             display_orders_target: "form",
                                             action: "submit->display-orders#search"
                                             } do |f| %>
-              <div class="d-flex justify-content-around">
+              <div class="d-flex justify-content-between">
                 <%= f.text_field :query,
-                  placeholder: "Digite o nome do medicamento ou princípio ativo", data: { display_orders_target: "input" }%>
+                  class: "form-control mx-2",
+                  placeholder: "Digite o nome do medicamento ou princípio ativo",
+                  data: { display_orders_target: "input" }%>
                 <%= f.text_field :units,
-                  placeholder: "Digite o n° de comprimidos", data: { display_orders_target: "units" }%>
+                  class: "form-control mx-2 pill",
+                  placeholder: "Digite o n° de comprimidos",
+                  data: { display_orders_target: "units" }%>
 
                 <div class="search-button">
-                  <%= f.submit "Procurar", class: "btn btn-primary mb-5" %>
+                  <%= f.submit "Procurar", class: "btn-principal mx-2" %>
                 </div>
               </div>
             <% end %>

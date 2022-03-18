@@ -1,21 +1,78 @@
-.btn-medium {
-  color: #000;
-  background-color: #CADBF1;
-  border-color: #CADBF1;
-  width: 300px;
-  margin: 20px;
-  border-radius: 5px;
+
+.btn-principal {
+  color: white;
+  background-color: #ee6780;
+  padding: 5px 5px;
+  margin-top: 10px;
+  border-radius: 50px;
+  width: 150px;
+  height: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-block;
   text-decoration: none;
-  padding: 10px;;
+  text-align: center;
+  align-items: center;
+  border: none;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: #943f4e;
+    color: white;
+  }
 }
 
-.btn-medium:hover {
+.btn-secondary {
+  color: #ee6780;
+  background-color: #fff;
+  padding: 5px 5px;
+  margin-top: 10px;
+  border-radius: 50px;
+  width: 100px;
+  height: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-block;
   text-decoration: none;
-  background-color: rgb(34, 45, 104);
-  color: #fff;
-}
+  text-align: center;
+  align-items: center;
+  border: none;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: #943f4e;
+    color: white;
+  }
 
 .button-section {
   display: flex;
   justify-content: center;
+}
+
+.btn-medication {
+  background-color: #54bebc;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #347574;
+    color: white;
+  }
+}
+
+.btn-terciary {
+  background-color: #fff;
+  color: #54bebc;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #fff;
+    color: #347574;
+  }
+}
+
 }
