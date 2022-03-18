@@ -1,4 +1,4 @@
-# class SendSMS
+class SendSMS
 #   attr_reader :message, :number
 # ​
 #   def initialize(message, number)
@@ -14,4 +14,4 @@
 #       body: @message
 #     })
 #   end
-# end
+end
