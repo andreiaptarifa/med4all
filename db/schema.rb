@@ -114,8 +114,6 @@ ActiveRecord::Schema.define(version: 2022_03_17_022129) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "latitude"
-    t.float "longitude"
     t.string "first_name"
     t.string "last_name"
     t.string "gender"
@@ -123,6 +121,8 @@ ActiveRecord::Schema.define(version: 2022_03_17_022129) do
     t.string "cellphone"
     t.string "cpf"
     t.string "user_type"
+    t.float "latitude"
+    t.float "longitude"
     t.string "street"
     t.string "number"
     t.string "city"
