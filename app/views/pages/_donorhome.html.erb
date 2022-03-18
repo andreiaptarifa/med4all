@@ -1,14 +1,11 @@
-<div class="banner">
-  <div class="container mt-5 text-center">
-    <div class= "row button-section">
-    <h2>50% dos brasileiros que precisam de remédios não podem comprar e acabam abandonando o tratamento.</h2>
-    <h2>Até o momento você doou x medicamentos, ajudando muitas pessoas!</h2>
-
-    <h2>O que você deseja fazer agora?</h2>
-      <%= link_to "Doar meus remédios", new_donation_path, class:"btn-home" %>
+ <div class="banner-donor" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(https://res.cloudinary.com/dwzrjmdwm/image/upload/v1647635941/development/kelly-sikkema-XX2WTbLr3r8-unsplash_kati8o.jpg);">
+    <div class="container donor-container">
+      <h1>50% dos brasileiros que precisam de remédios não podem comprar e acabam abandonando o tratamento.</h1>
     </div>
-    <div class= "row button-section">
-      <%= link_to "Preciso de remédios", new_medication_order_path, class:"btn-home" %>
+    <div class=secundary-text>
+      <h2>Até o momento você doou <%= current_user.donations.count %> medicamentos, ajudando muitas pessoas!</h1>
+      <h3>O que você deseja fazer agora?</h2>
+      <%= link_to "Doar meus remédios", new_donation_path, class:"btn-principal" %>
+      <%= link_to "Preciso de remédios", new_medication_order_path, class:"btn-principal" %>
     </div>
-  </div>
 </div>
