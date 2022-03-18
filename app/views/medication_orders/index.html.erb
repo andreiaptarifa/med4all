@@ -1,38 +1,40 @@
-<%# require "rqrcode"
-
-simple_qrcode = RQRCodeCore::QRCode.new("https://kyan.com", size: 1, level: :m, mode: :alphanumeric)
-
-# NOTE: showing with default options specified explicitly
-svg = qrcode.as_svg(
-  color: "000",
-  shape_rendering: "crispEdges",
-  module_size: 11,
-  standalone: true,
-  use_path: true
-) %>
-
-<div class="container m-5">
-<h2> Suas reservas: </h2>
-  <table class="table table-striped justify-content-center">
-    <thead>
-    <tr>
-      <th>Nome do Medicamento</th>
-      <th>Posto de Saúde</th>
-      <th>Unidades Reservadas</th>
-    </tr>
-    </thead>
-    <tbody>
+<%# <div class="new-container">
+<h2> Suas Reservas</h2>
+ <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">Nome do Medicamento</div>
+      <div class="col col-2">Posto de Saúde</div>
+      <div class="col col-3">Unidades Reservadas</div>
+    </li>
       <% @medication_orders.each do |medication_order| %>
-      <tr>
-        <td><%= medication_order.medication.commercial_name %></td>
-        <td><%= medication_order.pharmacy.pharmacy_name %></td>
-        <td><%= medication_order.units %></td>
+    <%# <li class="table-row">
+        <div class="col col-1" data-label="Nome do Medicamento"><%= medication_order.medication.commercial_name %>
+        <%# <div class="col col-2" data-label="Posto de Saúde"><%= medication_order.pharmacy.pharmacy_name</div> %>
+        <%# <div class="col col-3" data-label="Unidades Reservadas"><%= medication_order.units</div> %>
           <%# <td>
           <%= link_to 'Cancelar', root_path, class: 'btn btn-outline-dark' %>
           <%# </td> %>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+    <%# <% end %>
+    <%# </li>
+  </ul>
   <% @svg.html_safe? %>
+<%# </div> %>
+
+<div class="new-container">
+  <div class="table">
+    <h2 class="heading"> Suas Reservas </h2>
+      <div class="block">
+      <% @medication_orders.each do |medication_order| %>
+      <p><%= medication_order.medication.commercial_name %>
+        <span class="price"><%= medication_order.units %>
+          <sub>comprimidos</sub>
+        </span>
+        <ul class="options">
+          <li><%= medication_order.pharmacy.pharmacy_name %></li>
+          <li><%= medication_order.created_at %></li>
+        </ul>
+      </p>
+      <% end %>
+      </div>
+  </div>
 </div>
