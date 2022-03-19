@@ -4,8 +4,10 @@
     </div>
     <div class=secundary-text>
       <h2>Até o momento você doou <%= current_user.donations.count %> medicamentos, ajudando muitas pessoas!</h1>
-      <h3>O que você deseja fazer agora?</h2>
-      <%= link_to "Doar meus remédios", new_donation_path, class:"btn-principal" %>
-      <%= link_to "Preciso de remédios", new_medication_order_path, class:"btn-principal" %>
+    </div>
+    <div class=interrogative-text>
+        <h3>O que você deseja fazer agora?</h2>
+        <%= link_to "Doar meus remédios", new_donation_path, class:"btn-principal" %>
+        <%= link_to "Preciso de remédios", new_medication_order_path, class:"btn-principal" %>
     </div>
 </div>

@@ -25,8 +25,10 @@
       </div>
       <h5>
         <%= f.input :medication_id, :label => false , as: :hidden, input_html: { value: params[:medication_id] } %>
-        <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
-        <%= f.input :expiry_date, label: "Data de validade", class: "d-none", as: :string, required: true, input_html: { class: "datepicker" } %>
+        <div class= form-medication>
+          <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
+          <%= f.input :expiry_date, label: "Data de validade", class: "d-none", as: :string, required: true, input_html: { class: "datepicker" } %>
+        </div>
         <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies.order(:pharmacy_name), label_method: :pharmacy_name %>
         <%= f.button :submit, "Doar", class: 'btn-principal' %>
       </h5>
