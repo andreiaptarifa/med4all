@@ -2,7 +2,7 @@
   <div class="container mt-5 text-center">
     <div class= "row button-section">
     <h2>50% dos brasileiros que precisam de remédios não podem comprar e acabam abandonando o tratamento.</h2>
-    <h2>Até o momento você doou x medicamentos, ajudando muitas pessoas!</h2>
+    <h2>Até o momento você doou <%= current_user.donations.count %> medicamentos, ajudando muitas pessoas!</h2>
 
     <h2>O que você deseja fazer agora?</h2>
       <%= link_to "Doar meus remédios", new_donation_path, class:"btn-home" %>
