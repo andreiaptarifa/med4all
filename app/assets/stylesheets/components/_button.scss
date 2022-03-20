@@ -48,30 +48,70 @@
   }
 }
 
-.btn-secondary {
-  color: #ee6780;
+.btn-white {
+  color: #54bebc;
   background-color: #fff;
-  padding: 5px 5px;
-  margin-top: 10px;
-  border-radius: 50px;
-  width: 100px;
-  height: 50px;
-  font-weight: 600;
-  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 200px;
+  // border: none;
+  border-color:#54bebc;
+  // border-width: 0.5;
+  width: 30%;
+  font-weight: 700;
+  font-size: 20px;
   display: inline-block;
   text-decoration: none;
   text-align: center;
-  align-items: center;
-  border: none;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: #943f4e;
+    background-color: #54bebc;
     color: white;
   }
-
 }
 
+.btn-green {
+  color: #fff;
+  background-color: #54bebc;
+  padding: 10px 20px;
+  // border-radius: 200px;
+  border: none;
+  width: 30%;
+  font-weight: 700;
+  font-size: 20px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+
+  &:hover {
+    background-color: #fff;
+    color: #54bebc;
+    border-color:#54bebc;
+    border-width: 0.5;
+  }
+}
+
+// .btn-secondary {
+//   color: #ee6780;
+//   background-color: #fff;
+//   padding: 5px 5px;
+//   margin-top: 10px;
+//   border-radius: 50px;
+//   width: 100px;
+//   height: 50px;
+//   font-weight: 600;
+//   font-size: 15px;
+//   display: inline-block;
+//   text-decoration: none;
+//   text-align: center;
+//   align-items: center;
+//   border: none;
+//   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+
+//   &:hover {
+//     background-color: #943f4e;
+//     color: white;
+//   }
+// }
 .btn-terciary {
   background-color: #fff;
   color: #54bebc;
@@ -101,4 +141,26 @@
 .button-section {
   display: flex;
   justify-content: center;
+}
+
+
+.btn-donation {
+  color: #ee6780;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 200px;
+  border: #ee6780;
+  border-color:#ee6780;
+  border-width: 1;
+  width: 30%;
+  font-weight: 700;
+  font-size: 20px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+
+  &:hover {
+    background-color: #943f4e;
+    color: white;
+  }
 }

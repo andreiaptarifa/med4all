@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 80px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
 }
@@ -13,7 +13,7 @@
 }
 .footer-links a {
   color: #000;
-  opacity: 0.15;
+  opacity: 0.75;
   text-decoration: none;
   font-size: 24px;
   padding: 0px 5px;
@@ -23,16 +23,20 @@
 }
 
 .footer-about-us {
-
   a {
-    color: #000;
-    opacity: 0.15;
+    color: #1b3b3b;
+    opacity: 0.95;
     text-decoration: none;
     font-size: 20px;
     padding: 0px 5px;
-  }
-  &:hover {
 
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .fas fa-heart {
+    color: #1b3b3b;
+    opacity: 0.9;
   }
 
 }
