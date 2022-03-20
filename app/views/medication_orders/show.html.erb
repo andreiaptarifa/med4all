@@ -1,21 +1,18 @@
-<div class="container m-5">
-<h2> Sua reserva: </h2>
-  <table class="table table-striped justify-content-center">
-      <thead>
-        <tr>
-          <th>Nome do Medicamento</th>
-          <th>Posto de Saúde</th>
-          <th>Unidades Reservadas</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-           <td><%= @medication_order.medication.commercial_name %></td>
-           <td><%= @medication_order.pharmacy.pharmacy_name %></td>
-           <td><%= @medication_order.units %></td>
-        </tr>
-      </tbody>
-    </table>
-    <%= @svg.html_safe %>
-  <%= link_to 'Ver todas as reservas', medication_orders_path(@medication_orders), class: 'btn btn-outline-dark' %>
-</div>
+<section class="page-contain new-container">
+  <a href="#" class="data-card">
+    <h3><%= @medication_order.medication.commercial_name %></h3>
+    <h4><%= @medication_order.units %> comprimidos reservados<h4>
+    <h5>Você tem 24 horas para retirar seu medicamento no posto <%= @medication_order.pharmacy.pharmacy_name %></h5>
+    <span class="link-text">
+    <div class='d-flex align-items-end'>
+      <div class="px-3">
+      <%= @svg.html_safe %>
+      </div>
+      <p>Apresente o QR Code para retirar sua reserva</p>
+      <svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <%# <path fill-rule="evenodd" clip-rule="evenodd" d="M17.8631 0.929124L24.2271 7.29308C24.6176 7.68361 24.6176 8.31677 24.2271 8.7073L17.8631 15.0713C17.4726 15.4618 16.8394 15.4618 16.4489 15.0713C16.0584 14.6807 16.0584 14.0476 16.4489 13.657L21.1058 9.00019H0.47998V7.00019H21.1058L16.4489 2.34334C16.0584 1.95281 16.0584 1.31965 16.4489 0.929124C16.8394 0.538599 17.4726 0.538599 17.8631 0.929124Z" fill="#EE6780"/> %>
+      </svg>
+    </div>
+    </span>
+  </a>
+</section>
