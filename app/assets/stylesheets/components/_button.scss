@@ -61,6 +61,7 @@
     color: white;
   }
 }
+}
 
 .btn-terciary {
   background-color: #fff;
@@ -75,4 +76,24 @@
   }
 }
 
+.btn-green {
+  color: #fff;
+  background-color: #54BEBC;
+  padding: 10px 20px;
+  border-radius: 200px;
+  border: none;
+  // border-color:#54bebc;
+  // border-width: 0.5;
+  width: 30%;
+  font-weight: 700;
+  font-size: 20px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  &:hover {
+    background-color: #fff;
+    color: #54BEBC;
+    border-color:#54bebc;
+    border-width: 0.5;
+  }
 }

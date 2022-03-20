@@ -41,19 +41,21 @@
     <h2 class="heading"> Suas Doações </h2>
       <div class="block">
       <% @donations.each do |donation| %>
-      <p><%= donation.medication.commercial_name %>
+      <p><%= donation.medication.commercial_name %> - <%= donation.created_at.strftime('%d/%m/%y') %>
         <span class="price"><%= donation.units %>
           <sub>comprimidos</sub>
         </span>
         <ul class="options">
           <li><%= donation.medication.active_substance %> - <%= donation.medication.concentration %></li>
-          <li><strong><%= donation.created_at.strftime('%d/%m/%y') %></strong></li>
+          <%# <li><%= donation.created_at.strftime('%d/%m/%y') %>
         </ul>
       </p>
       <% end %>
       </div>
-      <button class="btn">
-      <p>faça outra doação</p>
-      </button>
-    </div>
+      <div class="d-flex justify-content-center border-top-0 align-items-center">
+        <button class="btn-green mb-5 ">
+          <strong>Faça Outra Doação</strong>
+        </button>
+      </div>
+  </div>
 </div>
