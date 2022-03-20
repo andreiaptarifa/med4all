@@ -21,19 +21,23 @@
   }
 
   p {
-    width: 50%;
+    width: 40%;
     font-size: 25px;
-    color: rgb(185, 181, 181);
+    color:rgb(100, 98, 98);
   }
 
 }
 
-.btn-login {
-  color: white;
-  background-color: #ee6780;
+
+.btn-donation {
+  color: #ee6780;
+  background-color: #fff;
   padding: 10px 20px;
-  border-radius: 50px;
-  width: 20%;
+  border-radius: 200px;
+  border: #ee6780;
+  border-color:#ee6780;
+  border-width: 0.5;
+  width: 30%;
   font-weight: 700;
   font-size: 20px;
   display: inline-block;

@@ -1,44 +1,48 @@
 
-  <%#= render 'animated' %>
   <div data-controller="display-numbers" data-action="scroll@window->display-numbers#updateNumber:!passive">
   <div class="banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(https://res.cloudinary.com/deiatarifa/image/upload/v1647538765/med4all/image-bg_afzy2i.png);">
     <div class="container banner-container">
-      <h1>Remédio do Bem</h1>
+      <%# <h1>Remédio do Bem</h1> %>
       <p>Nós ajudamos pacientes do SUS a terem o medicamento que precisam</p>
-      <a class="btn-login" href="#">Login</a>
+      <%# <a class="btn-login" href="#">Login</a> %>
+        <%= link_to "Doar meus remédios", new_donation_path, class:"btn-donation mt-5" %>
     </div>
   </div>
 
   <div class="info-cards" >
     <div class="card-category" >
-    <h2 data-display-numbers-target="medication"> <%= Donation.count(:units) %> </h2>
-    <h4 class="px-2"> Remédios doados</h4>
+      <h2 data-display-numbers-target="medication"> <%= Donation.count(:units) %> </h2>
+      <h4 class="px-2"> Remédios doados</h4>
     </div>
     <div class="card-category" >
-    <h2 data-display-numbers-target="patient"><%= MedicationOrder.count %></h2>
-    <h4 class="px-2"> Pacientes do SUS atendidos</h4>
+      <h2 data-display-numbers-target="patient"><%= MedicationOrder.count %></h2>
+      <h4 class="px-2"> Pacientes do SUS atendidos</h4>
     </div>
     <div class="card-category" >
-    <h2 data-display-numbers-target="center"><%= Donation.count(:pharmacy_id) %></h2>
-    <h4 class="px-2"> Postos de saúde parceiros</h4>
+      <h2 data-display-numbers-target="center"><%= Donation.count(:pharmacy_id) %></h2>
+      <h4 class="px-2"> Postos de saúde parceiros</h4>
     </div>
   </div>
 
-<div class= "row button-section">
-  <%= link_to "Doar meus remédios", new_donation_path, class:"btn-home" %>
+<%# <h3 class="icons-session">Impactos do projeto</h3> %>
+  <div class="icons-cards icons-session">
+    <div class="icons-card-category">
+      <div class="icon-image">
+        <%= image_tag("https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-money-banking-and-finance-kiranshastry-lineal-color-kiranshastry-10.png") %>
+      </div>
+      <p>Acesso a remédios não oferecidos no SUS</p>
+    </div>
+    <div class="icons-card-category">
+      <div class="icon-image">
+        <%= image_tag("https://img.icons8.com/external-fauzidea-flat-fauzidea/344/external-care-ecology-fauzidea-flat-fauzidea.png") %>
+      </div>
+      <p>Incentivo à doação</p>
+    </div>
+    <div class="icons-card-category">
+      <div class="icon-image">
+        <%= image_tag("https://img.icons8.com/external-flaticons-lineal-color-flat-icons/344/external-support-online-money-service-flaticons-lineal-color-flat-icons.png") %>
+      </div>
+      <p>Redução da poluição do meio ambiente</p>
+    </div>
+  </div>
 </div>
-<div class= "row button-section">
-  <%= link_to "Preciso de remédios", new_medication_order_path, class:"btn-home" %>
-</div>
-</div>
-
-<%#
-<div class="container mt-5 text-center">
-  <div class= "row button-section">
-  <%= render 'animated' %>
-    <%#= link_to "Doar meus remédios", new_donation_path, class:"btn-home" %>
-    <%# </div> %>
-  <%# <div class= "row button-section"> %>
-    <%#= link_to "Preciso de remédios", new_medication_order_path, class:"btn-home" %>
-  <%# </div>
-<div> %>

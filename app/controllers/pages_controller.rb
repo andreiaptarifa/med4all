@@ -9,4 +9,7 @@ class PagesController < ApplicationController
   def donorhome
   end
 
+  def about
+  end
+
 end
