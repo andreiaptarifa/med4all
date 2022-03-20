@@ -62,7 +62,7 @@
     h1 {
       width: 120%;
       margin: 0;
-      color: #249796;
+      color: #ee6780;
       font-size: 40px;
       font-style: italic;
       font-weight: 700;
@@ -71,13 +71,14 @@
 
   .secundary-text {
     position: absolute;
-    top: 400px;
-    left: 400px;
+    top: 450px;
+    left: 350px;
 
     h2 {
       font-family: "Montserrat", "Helvetica", "sans-serif";
       font-weight: bold;
-      color: #ee6780;
+      text-align: center;
+      color: #249796;
     }
   }
 
@@ -90,7 +91,7 @@
     h3 {
       font-family: "Montserrat", "Helvetica", "sans-serif";
       font-weight: bold;
-      color: rgb(60, 59, 59);
+      // color: rgb(60, 59, 59);
       padding: 10px;
     }
   }

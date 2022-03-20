@@ -1,13 +1,9 @@
- <div class="banner-donor" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(https://res.cloudinary.com/dwzrjmdwm/image/upload/v1647635941/development/kelly-sikkema-XX2WTbLr3r8-unsplash_kati8o.jpg);">
+ <div class="banner-donor" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0)), url(https://res.cloudinary.com/dwzrjmdwm/image/upload/o_75/v1647635941/development/kelly-sikkema-XX2WTbLr3r8-unsplash_kati8o.jpg);">
     <div class="container donor-container">
-      <h1>50% dos brasileiros que precisam de remédios não podem comprar e acabam abandonando o tratamento.</h1>
+      <h1>Obrigado, <%= current_user.first_name.capitalize %>! </h1>
     </div>
     <div class=secundary-text>
       <h2>Até o momento você doou <%= current_user.donations.count %> medicamentos, ajudando muitas pessoas!</h1>
     </div>
-    <div class=interrogative-text>
-        <h3>O que você deseja fazer agora?</h2>
-        <%= link_to "Doar meus remédios", new_donation_path, class:"btn-principal" %>
-        <%= link_to "Preciso de remédios", new_medication_order_path, class:"btn-principal" %>
-    </div>
+
 </div>

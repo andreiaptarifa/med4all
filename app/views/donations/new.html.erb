@@ -25,7 +25,7 @@
       </div>
       <h5>
         <%= f.input :medication_id, :label => false , as: :hidden, input_html: { value: params[:medication_id] } %>
-        <div class= form-medication>
+        <div class= "d-flex justify-content-betwen form-medication">
           <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
           <%= f.input :expiry_date, label: "Data de validade", class: "d-none", as: :string, required: true, input_html: { class: "datepicker" } %>
         </div>
