@@ -1,16 +1,14 @@
 .info-cards {
-  height: 300px;
+  height: 250px;
   width: 100%;
   background-color: #FCFFFD;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
-
-
 }
 
 .card-category {
-  margin-top: 10px;
+  margin-top: 30px;
   background-size: cover;
   background-position: center;
   height: 180px;
@@ -29,7 +27,7 @@
     text-align: center;
     color:  #EE6780;
     // rosa #EE6780
-    font-size: 50px;
+    font-size: 70px;
     font-weight: bold;
 
   }
@@ -37,6 +35,11 @@
   h4 {
     color: rgb(128, 124, 124);
     // cinza rgb(128, 124, 124)
+  }
+
+  p {
+    color:rgb(128, 124, 124);
+    font-size: 20px;
   }
 }
 

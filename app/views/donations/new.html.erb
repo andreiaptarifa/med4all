@@ -1,19 +1,19 @@
 <div class="new-container">
-<h1>Nova doação</h1>
+<h1 class="mb-5">Nova doação</h1>
 <div data-controller="display-results" data-display-results-position-value="beforeend">
   <div class="search-bar d-flex mt-4 mb-3">
-      <div class="form-search col-6">
+      <div class="form-search col-12">
         <%= form_for :query, url: medications_path, method: :get, remote: true,
                                        data: {
                                           display_results_target: "form",
                                           action: "submit->display-results#search"
                                           } do |f| %>
-          <%= f.text_field :query,
-            class: "form-control",
-            placeholder: "Digite o nome do medicamento ou princípio ativo", data: { display_results_target: "input" }%>
-      <div>
-          <%= f.submit "Procurar", class: "btn-principal"%>
-      </div>
+          <div class="d-flex justify-content-between">
+            <%= f.text_field :query,
+              class: "form-control mx-2",
+              placeholder: "Digite o nome do medicamento ou princípio ativo", data: { display_results_target: "input" }%>
+            <%= f.submit "Procurar", class: "btn-donation mx-2"%>
+          </div>
       <% end %>
       </div>
   </div>
@@ -21,12 +21,16 @@
   <div data-controller="flatpickr">
   <%= simple_form_for [@donation] do |f|%>
       <div class="results-medications">
-        <span data-display-results-target="results"><h4>Nome do medicamento:</h4></span>
-      </div>
+        <% if params[:medication_id] %>
+          <span data-display-results-target="results"><h4>Nome do medicamento:</h4></span>
+        <% end %>
+        </div>
       <h5>
         <%= f.input :medication_id, :label => false , as: :hidden, input_html: { value: params[:medication_id] } %>
-        <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
-        <%= f.input :expiry_date, label: "Data de validade", class: "d-none", as: :string, required: true, input_html: { class: "datepicker" } %>
+          <div class= "d-flex justify-content-between form-medication">
+            <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
+            <%= f.input :expiry_date, label: "Data de validade", class: "d-none", as: :string, required: true, input_html: { class: "datepicker" } %>
+          </div>
         <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies.order(:pharmacy_name), label_method: :pharmacy_name %>
         <%= f.button :submit, "Doar", class: 'btn-principal' %>
       </h5>
