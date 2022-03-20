@@ -59,15 +59,43 @@
 }
 
   .donor-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
-    height: 100%;
+    position: absolute;
+    top: 90px;
+    left: 20px;
+
+    h1 {
+      width: 120%;
+      margin: 0;
+      color: #ee6780;
+      font-size: 40px;
+      font-style: italic;
+      font-weight: 700;
+    }
   }
 
-  // .secundary-text {
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: top;
-  //   height: 100%;
-  // }
+  .secundary-text {
+    position: absolute;
+    top: 450px;
+    left: 350px;
+
+    h2 {
+      font-family: "Montserrat", "Helvetica", "sans-serif";
+      font-weight: bold;
+      text-align: center;
+      color: #249796;
+    }
+  }
+
+  .interrogative-text {
+    position: absolute;
+    top: 500px;
+    left: 500px;
+    text-align: center;
+
+    h3 {
+      font-family: "Montserrat", "Helvetica", "sans-serif";
+      font-weight: bold;
+      // color: rgb(60, 59, 59);
+      padding: 10px;
+    }
+  }
