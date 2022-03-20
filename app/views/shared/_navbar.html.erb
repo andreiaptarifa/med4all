@@ -6,7 +6,7 @@
         <%= image_tag "https://img.icons8.com/external-justicon-flat-justicon/64/000000/external-medicine-hospital-and-medical-justicon-flat-justicon.png" %>
       </div>
       <div>
-        <p class="mb-0 px-2">Remédio do bem</p>
+        <h1 class="mb-0 px-2">Remédio do bem<h1>
       </div>
     </div>
     <% end %>
@@ -38,6 +38,12 @@
             </div>
           </li>
         <% else %>
+          <li class="nav-item">
+            <%= link_to "Doar remédios", new_donation_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Reservar remédios", new_medication_order_path, class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>

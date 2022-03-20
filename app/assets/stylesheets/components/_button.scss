@@ -7,6 +7,24 @@
   border-radius: 5px;
 }
 
+.btn-login {
+  color: white;
+  background-color: #ee6780;
+  padding: 10px 20px;
+  border-radius: 50px;
+  width: 20%;
+  font-weight: 700;
+  font-size: 20px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+
+  &:hover {
+    background-color: #943f4e;
+    color: white;
+  }
+}
+
 .btn-principal {
   color: white;
   background-color: #ee6780;
@@ -52,22 +70,6 @@
     color: white;
   }
 
-.button-section {
-  display: flex;
-  justify-content: center;
-}
-
-.btn-medication {
-  background-color: #54bebc;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 50px;
-  text-decoration: none;
-
-  &:hover {
-    background-color: #347574;
-    color: white;
-  }
 }
 
 .btn-terciary {
@@ -83,4 +85,20 @@
   }
 }
 
+.btn-medication {
+  background-color: #54bebc;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #347574;
+    color: white;
+  }
+}
+
+.button-section {
+  display: flex;
+  justify-content: center;
 }
