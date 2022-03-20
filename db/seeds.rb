@@ -6,7 +6,7 @@ require 'csv'
 # MedicationOrder.destroy_all
 # Donation.destroy_all
 # Inventory.destroy_all
-# Pharmacy.destroy_all
+Pharmacy.destroy_all
 # Medication.destroy_all
 
 # letters = ("a".."z").to_a
@@ -27,7 +27,7 @@ require 'csv'
 
 # medications = []
 
-# active_principles.first(10).each do |active_principle|
+# active_principles.first(1000).each do |active_principle|
 #   sleep 2
 #   html_file = URI.open(active_principle).read
 #   html_doc = Nokogiri::HTML(html_file)
@@ -42,7 +42,7 @@ require 'csv'
 # puts "--> Até aqui deu certo :D"
 
 # meds = []
-# medications.uniq.first(10).each do |medication|
+# medications.uniq.first(1000).each do |medication|
 #   p medication
 #   sleep 2
 #   html_file = URI.open(medication).read
@@ -69,32 +69,35 @@ require 'csv'
 #   end
 
 
-# filepath = "db/data/new_csv.csv"
+filepath = "db/data/new_csv.csv"
 
-# CSV.foreach(filepath, quote_char: "\x00", headers: :first_row) do |row|
-#   pharmacy_interior = Pharmacy.new(
-#     pharmacy_name: "#{row[1]}",
-#     pharmacy_address: "#{row[2]}, #{row[0]}"
-#   )
-#   pharmacy_interior.save!
-# end
+CSV.foreach(filepath, quote_char: "\x00", headers: :first_row) do |row|
+  pharmacy_interior = Pharmacy.new(
+    pharmacy_name: "#{row[1]}",
+    pharmacy_address: "#{row[2]}, #{row[0]}"
+  )
+  pharmacy_interior.save!
+end
+puts "base interior importada"
 
-# filepath_grandesp = "db/data/unidades_grandesp.csv"
+filepath_grandesp = "db/data/unidades_grandesp.csv"
 
-# CSV.foreach(filepath_grandesp, headers: :first_row) do |row|
-#  pharmacy_grande = Pharmacy.new(
-#     pharmacy_name: "#{row[2]}",
-#     pharmacy_address: "#{row[3]}, #{row[1]}"
-#   )
-#   pharmacy_grande.save!
-# end
+CSV.foreach(filepath_grandesp, headers: :first_row) do |row|
+ pharmacy_grande = Pharmacy.new(
+    pharmacy_name: "#{row[2]}",
+    pharmacy_address: "#{row[3]}, #{row[1]}"
+  )
+  pharmacy_grande.save!
+end
+puts "base grande são paulo importada"
 
 filepath_capital = "db/data/unidades_capital.csv"
 
-CSV.foreach(filepath_capital, headers: :first_row).first(10) do |row|
+CSV.foreach(filepath_capital, headers: :first_row) do |row|
   pharmacy_capital = Pharmacy.new(
     pharmacy_name: "#{row[0]}",
     pharmacy_address: "#{row[1]}, São Paulo"
   )
   pharmacy_capital.save!
 end
+puts "base capital importada"

@@ -5,6 +5,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+
+
 }
 
 .card-category {
@@ -15,6 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   // color: rgb(122, 119, 119);
   font-size: 24px;
   font-weight: bold;
@@ -24,6 +27,16 @@
 
   h2 {
     text-align: center;
+    color:  #EE6780;
+    // rosa #EE6780
+    font-size: 50px;
+    font-weight: bold;
+
+  }
+
+  h4 {
+    color: rgb(128, 124, 124);
+    // cinza rgb(128, 124, 124)
   }
 }
 
@@ -54,6 +67,11 @@
     padding: 10px 20px;
     border-radius: 50px;
     text-decoration: none;
+
+    &:hover {
+      background-color: #347574;
+      color: white;
+    }
   }
 }
 

@@ -1,3 +1,5 @@
-<p><strong><%= medication.active_substance %>: </strong><%= medication.name_and_concentration %><p>
-<%= image_tag("https://img.icons8.com/external-prettycons-flat-prettycons/47/000000/external-medicine-meds-drugs-prettycons-flat-prettycons-1.png") %>
-<%= link_to "Selecionar", new_medication_order_path(medication_id: medication.id, units: @units)%>
+<div class="card-medication">
+  <%= image_tag("https://img.icons8.com/external-prettycons-flat-prettycons/47/000000/external-medicine-meds-drugs-prettycons-flat-prettycons-1.png") %>
+  <p><strong><%= medication.active_substance %>: </strong><%= medication.name_and_concentration %><p>
+  <%= link_to "Selecionar", new_medication_order_path(medication_id: medication.id, units: @units, anchor: "anchor-text"), class: "btn-medication"%>
+</div>
