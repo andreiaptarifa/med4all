@@ -31,7 +31,7 @@
         </span>
         <ul class="options">
           <li><%= medication_order.pharmacy.pharmacy_name %></li>
-          <li><%= medication_order.created_at %></li>
+          <li><strong><%= medication_order.created_at.strftime('%d/%m/%y') %></strong></li>
         </ul>
       </p>
       <% end %>
