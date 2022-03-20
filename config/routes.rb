@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :medications, only: :index
 
   get 'medications/reservation', to: 'medications#reservation'
+  get 'pages/about', to: 'pages#about'
 
   controller :pages do
     get :qr_code_generator
