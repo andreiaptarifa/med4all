@@ -1,5 +1,4 @@
 
-  <%#= render 'animated' %>
   <div data-controller="display-numbers" data-action="scroll@window->display-numbers#updateNumber:!passive">
   <div class="banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(https://res.cloudinary.com/deiatarifa/image/upload/v1647538765/med4all/image-bg_afzy2i.png);">
     <div class="container banner-container">
@@ -24,6 +23,18 @@
     </div>
   </div>
 
+
+  <div class="info-cards icons-session">
+    <div class="card-category">
+      <p>Incentivo à doação</p>
+    </div>
+    <div class="card-category">
+      <p>Acesso a remédios não oferecidos no SUS</p>
+    </div>
+    <div class="card-category">
+      <p>Ajuda o meio ambiente</p>
+    </div>
+  </div>
 <div class= "row button-section">
   <%= link_to "Doar meus remédios", new_donation_path, class:"btn-home" %>
 </div>

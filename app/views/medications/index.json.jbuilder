@@ -9,8 +9,6 @@
 
 json.array! @medications, partial: 'medication.html.erb', as: :medication
 
-
-
 # => [ { "id": 1, "name": "David" }, { "id": 2, "name": "Jamie" } ]
 
 # @medications.each do |med|

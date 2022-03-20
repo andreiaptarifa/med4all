@@ -1,24 +1,13 @@
-// // Specific CSS for your home-page
-// .btn-home {
-//   color: #000;
-//   background-color: #CADBF1;
-//   border-color: #CADBF1;
-//   width: 300px;
-//   margin: 20px;
-//   border-radius: 5px;
-//   text-decoration: none;
-//   padding: 10px;
-// }
+.icons-session {
+  height: 500px;
+  margin-top: 40px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color:  rgba(247, 243, 243, 0.979);
 
-// .btn-home:hover {
-//   text-decoration: none;
-//   background-color: rgb(34, 45, 104);
-//   color: #fff;
-// }
-
-// .button-section {
-//   display: flex;
-//   justify-content: center;
-// }
-
-//banner scss:
+  h2{
+    font-size: 20px;
+    color: #54BEBC;
+  }
+}
