@@ -1,39 +1,14 @@
-<%# <div class="new-container">
-<h2> Suas Reservas</h2>
- <ul class="responsive-table">
-    <li class="table-header">
-      <div class="col col-1">Nome do Medicamento</div>
-      <div class="col col-2">Posto de Saúde</div>
-      <div class="col col-3">Unidades Reservadas</div>
-    </li>
-      <% @medication_orders.each do |medication_order| %>
-    <%# <li class="table-row">
-        <div class="col col-1" data-label="Nome do Medicamento"><%= medication_order.medication.commercial_name %>
-        <%# <div class="col col-2" data-label="Posto de Saúde"><%= medication_order.pharmacy.pharmacy_name</div> %>
-        <%# <div class="col col-3" data-label="Unidades Reservadas"><%= medication_order.units</div> %>
-          <%# <td>
-          <%= link_to 'Cancelar', root_path, class: 'btn btn-outline-dark' %>
-          <%# </td> %>
-    <%# <% end %>
-    <%# </li>
-  </ul>
-  <% @svg.html_safe? %>
-<%# </div> %>
-
 <div class="new-container">
-  <div class="table">
-    <h2 class="heading"> Suas Reservas </h2>
-      <div class="block">
+  <div class="table-new">
+    <h2> Suas Reservas </h2>
+      <div class="table-content">
       <% @medication_orders.each do |medication_order| %>
-      <p><%= medication_order.medication.commercial_name %>
-        <span class="price"><%= medication_order.units %>
-          <sub>comprimidos</sub>
-        </span>
-        <ul class="options">
-          <li><%= medication_order.pharmacy.pharmacy_name %></li>
-          <li><strong><%= medication_order.created_at.strftime('%d/%m/%y') %></strong></li>
-        </ul>
-      </p>
+        <div class="table-grid">
+          <span><strong><%= medication_order.medication.active_substance %> - <%= medication_order.medication.concentration %></strong></span>
+          <span><%= medication_order.units %>comprimidos</span>
+          <span><%= medication_order.pharmacy.pharmacy_name %></span>
+          <span class="text-center"><strong><%= medication_order.created_at.strftime('%d/%m/%y') %></strong></span>
+        </div>
       <% end %>
       </div>
   </div>
