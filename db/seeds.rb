@@ -27,7 +27,7 @@ end
 
 medications = []
 
-active_principles.last(30000).each do |active_principle|
+active_principles.drop(1000).each do |active_principle|
   sleep 1
   html_file = URI.open(active_principle).read
   html_doc = Nokogiri::HTML(html_file)
@@ -42,7 +42,7 @@ end
 puts "--> Até aqui deu certo :D"
 
 meds = []
-medications.uniq.last(8000).each do |medication|
+medications.uniq.drop(1000).each do |medication|
   p medication
   sleep 1
   html_file = URI.open(medication).read
