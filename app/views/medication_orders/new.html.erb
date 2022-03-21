@@ -43,7 +43,7 @@
                 <%= f.input :units, label: false, class: "form-control form-control-lg", as: :hidden, input_html: { value: params[:units] } %>
                 <%= f.input :qr_code, as: :hidden, input_html: { value: "Reserva para: #{current_user.first_name.capitalize} #{current_user.last_name.capitalize} - Nº da Reserva: #{rand(1000..3000)}" } %>
                 <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies, label_method: :pharmacy_name %>
-                <%= f.submit "Reservar", class: 'btn-medium' %>
+                <%= f.submit "Reservar", class: 'btn-principal' %>
               <% end %>
             <% else %>
               <p>Não temos esse medicamento</p>

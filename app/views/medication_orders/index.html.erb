@@ -5,7 +5,7 @@
       <% @medication_orders.each do |medication_order| %>
         <div class="table-grid">
           <span><strong><%= medication_order.medication.active_substance %> - <%= medication_order.medication.concentration %></strong></span>
-          <span><%= medication_order.units %>comprimidos</span>
+          <span><%= medication_order.units %> comprimidos</span>
           <span><%= medication_order.pharmacy.pharmacy_name %></span>
           <span class="text-center"><strong><%= medication_order.created_at.strftime('%d/%m/%y') %></strong></span>
         </div>
