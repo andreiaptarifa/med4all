@@ -1,4 +1,4 @@
-<div class="container mt-5" data-controller="flatpickr">
+<div class="new-container mt-5" data-controller="flatpickr">
   <h2>Sign up</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -51,7 +51,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Cadastrar", class: "btn-login" %>
     </div>
   <% end %>
 

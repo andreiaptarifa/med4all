@@ -1,34 +1,3 @@
-.banner {
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
-  height: 100vh;
-
-  .banner-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-  }
-
-  h1 {
-    width: 50%;
-    margin: 0;
-    color: #54bebc;
-    font-size: 50px;
-    font-style: italic;
-    font-weight: 700;
-  }
-
-  p {
-    width: 40%;
-    font-size: 25px;
-    color:rgb(100, 98, 98);
-  }
-
-}
-
-
 .btn-donation {
   color: #ee6780;
   background-color: #fff;
