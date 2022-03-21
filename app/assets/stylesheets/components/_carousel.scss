@@ -1,15 +1,12 @@
-.banner {
+.banner-container {
+  // display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 80px - 50px);
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
-  height: 100vh;
+  padding: 0 120px;
 
-  .banner-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-  }
 
   h1 {
     width: 50%;
