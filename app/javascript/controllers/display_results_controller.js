@@ -18,9 +18,11 @@ export default class extends Controller {
     })
     .then(response => response.json())
     .then((data) => {
+      this.resultsTarget.insertAdjacentHTML("afterbegin", "<h4>Nome do medicamento:</h4>")
       console.log(data)
       data.forEach( (med) => {
         this.resultsTarget.classList.remove("d-none")
+
         this.resultsTarget.insertAdjacentHTML('beforeend', med)
         })
       })

@@ -3,12 +3,12 @@ require 'nokogiri'
 require 'open-uri'
 # csv will be used to export data
 require 'csv'
-# MedicationOrder.destroy_all
-# Donation.destroy_all
-# Inventory.destroy_all
+MedicationOrder.destroy_all
+Donation.destroy_all
+Inventory.destroy_all
 # Pharmacy.destroy_all
-# Medication.destroy_all
-
+Medication.destroy_all
+puts "você destruiu o db"
 letters = ("a".."z").to_a
 
 active_principles = []
@@ -27,7 +27,7 @@ end
 
 medications = []
 
-active_principles.last(30000).each do |active_principle|
+active_principles.each do |active_principle|
   sleep 1
   html_file = URI.open(active_principle).read
   html_doc = Nokogiri::HTML(html_file)
@@ -42,7 +42,7 @@ end
 puts "--> Até aqui deu certo :D"
 
 meds = []
-medications.uniq.last(8000).each do |medication|
+medications.uniq.each do |medication|
   p medication
   sleep 1
   html_file = URI.open(medication).read
