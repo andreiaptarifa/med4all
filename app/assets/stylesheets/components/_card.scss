@@ -162,15 +162,18 @@
   box-shadow: 0 1.5em 2.5em -.5em rgba(#000000, .1);
   transition: transform .45s ease, background .45s ease;
 
-  h3 {
+  h3 .title {
     color: rgb(88, 85, 85);
-    font-size: 3.5em;
+    font-size: 3em;
     font-weight: 600;
     line-height: 1;
     padding-bottom: .5em;
+    padding-left: 10px;
+    padding-right: 10px;
     margin: 0 0 0.142857143em;
     border-bottom: 2px solid #EE6780;
     transition: color .45s ease, border .45s ease;
+    text-decoration: none;
   }
 
   h4 {
@@ -220,9 +223,16 @@
     h3 {
       color: #FFFFFF;
       border-bottom-color: #943e4e;
+      text-decoration: none;
     }
 
-    h4 {
+    .title {
+      color: #FFFFFF;
+      border-bottom-color: #943e4e;
+      text-decoration: none;
+    }
+
+    h4 p {
       color: #FFFFFF;
     }
 

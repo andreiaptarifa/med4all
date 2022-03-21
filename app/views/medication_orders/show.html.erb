@@ -1,6 +1,6 @@
 <section class="page-contain new-container">
-  <a href="#" class="data-card">
-    <h3><%= @medication_order.medication.commercial_name %></h3>
+  <div class="data-card">
+    <h3><%= link_to "#{@medication_order.medication.commercial_name}", medication_orders_path, class:"title" %></h3>
     <h4><%= @medication_order.units %> comprimidos reservados<h4>
     <h5>Você tem 24 horas para retirar seu medicamento no posto <%= @medication_order.pharmacy.pharmacy_name %></h5>
     <span class="link-text">
@@ -14,5 +14,5 @@
       </svg>
     </div>
     </span>
-  </a>
+  </div>
 </section>
