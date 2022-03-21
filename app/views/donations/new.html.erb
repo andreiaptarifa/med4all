@@ -22,10 +22,8 @@
   <div data-controller="flatpickr">
   <%= simple_form_for [@donation] do |f|%>
       <div class="results-medications">
-        <%# <% if params[:medication_id] %>
-          <span data-display-results-target="results"></span>
-        <%# end %>
-        </div>
+        <span data-display-results-target="results"></span>
+      </div>
       <h5>
         <%= f.input :medication_id, :label => false , as: :hidden, input_html: { value: params[:medication_id] } %>
         <div class="row">
@@ -37,12 +35,11 @@
           </div>
         </div>
           <div class="col-10">
-            <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies.order(:pharmacy_name), label_method: :pharmacy_name %>
+            <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies.sort_by{ |p| p.pharmacy_name }, label_method: :pharmacy_name %>
             <%= f.button :submit, "Doar", class: 'btn-principal' %>
           </div>
       </h5>
   <% end %>
-
   </div>
   <h4>Unidades mais próximas a você: </h4>
   <% if @markers %>
