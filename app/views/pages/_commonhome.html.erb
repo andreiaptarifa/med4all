@@ -1,5 +1,25 @@
+<div data-controller="display-numbers" data-action="scroll@window->display-numbers#updateNumber:!passive">
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active banner-container" data-bs-interval="2000">
+      <p>50% dos brasileiros que precisam de remédios não podem comprar e acabam abandonando o tratamento.</p>
+      <img src="https://res.cloudinary.com/deiatarifa/image/upload/v1647822671/med4all/senhora_y3zxov.jpg" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6))" class="d-block w-100 carousel-img" %>
+    </div>
+    <div class="carousel-item banner" data-bs-interval="3000">
+      <p>Nós ajudamos pacientes do SUS a terem o medicamento que precisam</p>
+      <img src="https://res.cloudinary.com/deiatarifa/image/upload/v1647538765/med4all/image-bg_afzy2i.png" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6))" class="d-block w-100 carousel-img" %>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
-  <div data-controller="display-numbers" data-action="scroll@window->display-numbers#updateNumber:!passive">
   <div class="banner" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(https://res.cloudinary.com/deiatarifa/image/upload/v1647538765/med4all/image-bg_afzy2i.png);">
     <div class="container banner-container">
       <%# <h1>Remédio do Bem</h1> %>
