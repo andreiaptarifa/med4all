@@ -23,6 +23,10 @@
     color:rgb(100, 98, 98);
   }
 
+  #first-img-text {
+    color: rgb(66, 65, 65);
+  }
+
 }
 
 .carousel-img {
@@ -30,15 +34,12 @@
   height: 100vh;
 }
 
-
 .btn-donation {
   color: #ee6780;
   background-color: #fff;
   padding: 10px 20px;
   border-radius: 200px;
-  border: #ee6780;
-  border-color:#ee6780;
-  border-width: 0.5;
+  border: 1px solid #ee6780;
   width: 30%;
   font-weight: 700;
   font-size: 20px;
@@ -49,5 +50,6 @@
   &:hover {
     background-color: #943f4e;
     color: white;
+    border: 1px solid #943f4e;
   }
 }

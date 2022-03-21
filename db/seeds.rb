@@ -34,8 +34,8 @@ active_principles.each do |active_principle|
   html_doc.search(".result-item__title a").each do |element|
     url = "https://consultaremedios.com.br#{element.attribute("href").value}"
     medications << url
-
     # puts element.attribute("href").value
+    puts url
   end
 end
 # puts medications[0]
@@ -61,6 +61,7 @@ medications.uniq.each do |medication|
                             lab: lab
                             # imagem: element.search(".new-product-header__top-side__top-left-side img")
         )
+        puts Medication.last
       else
         puts "falha na regex"
         puts "active_substance: #{active_substance}"
