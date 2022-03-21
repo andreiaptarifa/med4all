@@ -1,8 +1,9 @@
 <div class="new-container">
+
+<div class="form-container" data-controller="display-results" data-display-results-position-value="beforeend">
 <h1 class="mb-5">Nova doação</h1>
-<div data-controller="display-results" data-display-results-position-value="beforeend">
   <div class="search-bar d-flex mt-4 mb-3">
-      <div class="form-search col-12">
+      <div class="form-search col-10">
         <%= form_for :query, url: medications_path, method: :get, remote: true,
                                        data: {
                                           display_results_target: "form",
@@ -21,33 +22,40 @@
   <div data-controller="flatpickr">
   <%= simple_form_for [@donation] do |f|%>
       <div class="results-medications">
-        <% if params[:medication_id] %>
-          <span data-display-results-target="results"><h4>Nome do medicamento:</h4></span>
-        <% end %>
+        <%# <% if params[:medication_id] %>
+          <span data-display-results-target="results"></span>
+        <%# end %>
         </div>
       <h5>
         <%= f.input :medication_id, :label => false , as: :hidden, input_html: { value: params[:medication_id] } %>
-          <div class= "d-flex justify-content-between form-medication">
+        <div class="row">
+          <div class= "form-medication col-5">
             <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
+          </div>
+           <div class= "form-medication col-5">
             <%= f.input :expiry_date, label: "Data de validade", class: "d-none", as: :string, required: true, input_html: { class: "datepicker" } %>
           </div>
-        <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies.order(:pharmacy_name), label_method: :pharmacy_name %>
-        <%= f.button :submit, "Doar", class: 'btn-principal' %>
+        </div>
+          <div class="col-10">
+            <%= f.association :pharmacy, :label => "Local de coleta", collection: @pharmacies.order(:pharmacy_name), label_method: :pharmacy_name %>
+            <%= f.button :submit, "Doar", class: 'btn-principal' %>
+          </div>
       </h5>
   <% end %>
 
   </div>
-</div>
-<% if @markers %>
   <h4>Unidades mais próximas a você: </h4>
-  <div class="container d-flex justify-content-around">
-    <div style="width: 100%; height: 400px;"
+  <% if @markers %>
+  <div>
+    <div style="width: 83%; height: 400px;"
       data-controller="mapbox"
       data-mapbox-markers-value="<%= @markers.to_json %>"
       data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      class="col-6 ml-2">
+      class="col-6">
     </div>
   </div>
 <% end %>
+</div>
+
 
 </div>

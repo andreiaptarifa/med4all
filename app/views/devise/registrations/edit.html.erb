@@ -11,60 +11,58 @@
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
 
-      <%= f.input :first_name,
+      <%= f.input :first_name, :label => "Nome",
                   hint: "leave it blank if you don't want to change it",
                   required: false %>
-      <%= f.input :last_name,
+      <%= f.input :last_name, :label => "Sobrenome",
                   hint: "leave it blank if you don't want to change it",
                   required: false %>
-      <%= f.input :gender,
+      <%= f.input :gender, :label => "Genero",
                   hint: "leave it blank if you don't want to change it",
                   required: false,
                   collection: User::GENDER %>
-      <%= f.input :birthday,
+      <%= f.input :birthday, :label => "Nascimento",
                   hint: "leave it blank if you don't want to change it",
                   required: false %>
-      <%= f.input :cellphone,
+      <%= f.input :cellphone, :label => "Celular",
                   hint: "leave it blank if you don't want to change it",
                   required: false %>
-      <%= f.input :user_type,
+      <%= f.input :user_type, :label => "Tipo de usuário",
                   hint: "leave it blank if you don't want to change it",
                   required: false,
                   collection: User::USER_TYPE %>
-      <%= f.input :street,
+      <%= f.input :street, :label => "Rua",
                   hint: "leave it blank if you don't want to change it",
                   required: false %>
-      <%= f.input :number,
+      <%= f.input :number, :label => "Número",
                   hint: "leave it blank if you don't want to change it",
                   required: false %>
-      <%= f.input :city,
+      <%= f.input :city, :label => "Cidade",
                   hint: "leave it blank if you don't want to change it",
                   required: false %>
-      <%= f.input :password,
+      <%= f.input :password, :label => "Nova senha",
                   hint: "leave it blank if you don't want to change it",
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
+      <%= f.input :password_confirmation, :label => "Confirme a nova senha",
                   required: false,
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :current_password,
+      <%= f.input :current_password, :label => "Senha atual",
                   hint: "we need your current password to confirm your changes",
                   required: true,
                   input_html: { autocomplete: "current-password" } %>
-      <%= f.input :photo,
+      <%= f.input :photo, :label => "Foto",
                   as: :file,
                   placeholder:"Image",
                   :label => 'Image file:'%>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Update", class: 'btn-medium' %>
+      <%= f.button :submit, "Update", class: "btn-white" %>
     </div>
   <% end %>
 
-  <h3>Cancel my account</h3>
-
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p>Descontente? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
   <%= link_to "Back", :back, class: "btn btn-light" %>
 </div>

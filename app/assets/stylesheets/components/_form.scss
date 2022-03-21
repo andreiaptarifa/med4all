@@ -1,8 +1,8 @@
 
-.new-container {
-  padding: 80px;
+.form-container {
+  margin-left: 100px;
   margin-top: 40px;
-}
+  }
 
 .margin-anchor{
   margin-top: 200px;
@@ -11,6 +11,10 @@
   background-color: rgba(247, 243, 243, 0.979);
   padding: 100px;
   // margin-top: 20px;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .form-search input {
