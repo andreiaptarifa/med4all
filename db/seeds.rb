@@ -28,7 +28,7 @@ end
 medications = []
 
 active_principles.last(30000).each do |active_principle|
-  sleep 2
+  sleep 1
   html_file = URI.open(active_principle).read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(".result-item__title a").each do |element|
@@ -42,9 +42,9 @@ end
 puts "--> Até aqui deu certo :D"
 
 meds = []
-medications.uniq.last(5000).each do |medication|
+medications.uniq.last(8000).each do |medication|
   p medication
-  sleep 2
+  sleep 1
   html_file = URI.open(medication).read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(".new-product-header__top-side.new-product-header__top-side--quantity-ab-test").each do |element|
