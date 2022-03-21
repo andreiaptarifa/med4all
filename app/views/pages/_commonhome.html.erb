@@ -1,13 +1,16 @@
 <div data-controller="display-numbers" data-action="scroll@window->display-numbers#updateNumber:!passive">
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active banner-container" data-bs-interval="2000">
-      <p>50% dos brasileiros que precisam de remédios não podem comprar e acabam abandonando o tratamento.</p>
-      <img src="https://res.cloudinary.com/deiatarifa/image/upload/v1647822671/med4all/senhora_y3zxov.jpg" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6))" class="d-block w-100 carousel-img" %>
+    <div class="carousel-item active banner-container" data-bs-interval="2000" style="background-image: linear-gradient(to right, rgba(255,255,255,0.5), rgba(255,255,255,0.3)), url(https://res.cloudinary.com/deiatarifa/image/upload/v1647822671/med4all/senhora_y3zxov.jpg);">
+      <div class="d-flex w-100 h-100 align-items-center">
+        <p>50% dos brasileiros que precisam de remédios não podem comprar e acabam abandonando o tratamento.</p>
+      </div>
     </div>
-    <div class="carousel-item banner" data-bs-interval="3000">
-      <p>Nós ajudamos pacientes do SUS a terem o medicamento que precisam</p>
-      <img src="https://res.cloudinary.com/deiatarifa/image/upload/v1647538765/med4all/image-bg_afzy2i.png" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6))" class="d-block w-100 carousel-img" %>
+    <div class="carousel-item banner-container" data-bs-interval="2000" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(https://res.cloudinary.com/deiatarifa/image/upload/v1647538765/med4all/image-bg_afzy2i.png);">
+      <div class="d-flex flex-column w-100 h-100 justify-content-center">
+        <p>Nós ajudamos pacientes do SUS a terem o medicamento que precisam</p>
+        <%= link_to "Doar meus remédios", new_donation_path, class:"btn-donation mt-5" %>
+      </div>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -25,7 +28,6 @@
       <%# <h1>Remédio do Bem</h1> %>
       <p>Nós ajudamos pacientes do SUS a terem o medicamento que precisam</p>
       <%# <a class="btn-login" href="#">Login</a> %>
-        <%= link_to "Doar meus remédios", new_donation_path, class:"btn-donation mt-5" %>
     </div>
   </div>
 
