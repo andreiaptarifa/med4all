@@ -3,25 +3,28 @@
     <div data-controller="display-orders" data-display-orders-position-value="beforeend">
       <div data-display-orders-target ="search">
         <h1>Reserve um medicamento:</h1>
-        <div class="search-bar d-flex mt-4 mb-3 justify-content-between">
-          <div class="form-search col-12">
+        <div class="search-bar mt-4 mb-3 justify-content-between">
+          <div class="form-search">
             <%= form_for :query, url: medications_reservation_path, method: :get, remote: true,
                                           data: {
                                             display_orders_target: "form",
                                             action: "submit->display-orders#search"
                                             } do |f| %>
-              <div class="d-flex justify-content-between">
+              <div class="row justify-content-between">
+              <div class="col-7">
                 <%= f.text_field :query,
-                  class: "form-control mx-2",
+                  class: "form-control mx-2 form-height",
                   placeholder: "Digite o nome do medicamento ou princípio ativo",
                   data: { display_orders_target: "input" }%>
+              </div>
+              <div class="col-3">
                 <%= f.text_field :units,
-                  class: "form-control mx-2 pill",
-                  placeholder: "N° de comprimidos",
-                  data: { display_orders_target: "units" }%>
-
-                <div class="search-button">
-                  <%= f.submit "Procurar", class: "btn-principal" %>
+                    class: "form-control form-height",
+                    placeholder: "N° de comprimidos",
+                    data: { display_orders_target: "units" }%>
+              </div>
+                <div class="search-button col-2">
+                  <%= f.submit "Procurar", class: "btn-search-medication" %>
                 </div>
               </div>
             <% end %>
@@ -49,16 +52,15 @@
         </div>
 
     </div>
-  </div>
-  <% if @markers && @markers.count.positive? %>
-    <h5 class="mt-5">Unidades com o medicamento disponível: </h5>
-    <div class="d-flex justify-content">
-      <div style="width: 100%; height: 400px;"
-        data-controller="mapbox"
-        data-mapbox-markers-value="<%= @markers.to_json %>"
-        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <% if @markers && @markers.count.positive? %>
+      <h5 class="mt-5">Unidades com o medicamento disponível: </h5>
+      <div class="d-flex justify-content">
+        <div style="width: 100%; height: 400px;"
+          data-controller="mapbox"
+          data-mapbox-markers-value="<%= @markers.to_json %>"
+          data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
-    </div>
-  <% end %>
-
+    <% end %>
+  </div>
 </div>

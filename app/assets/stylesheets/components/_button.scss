@@ -48,6 +48,28 @@
   }
 }
 
+.btn-search-medication {
+  color: white;
+  background-color: #ee6780;
+  padding: 5px 5px;
+  border-radius: 50px;
+  width: 150px;
+  height: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  align-items: center;
+  border: none;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: #943f4e;
+    color: white;
+  }
+}
+
 .btn-white {
   color: #54bebc;
   background-color: #fff;

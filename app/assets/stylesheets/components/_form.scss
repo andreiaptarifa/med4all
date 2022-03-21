@@ -66,28 +66,28 @@ h5 label {
   margin-left: 10px;
 }
 
-.btn-principal {
-  color: white;
-  background-color: #ee6780;
-  padding: 5px 5px;
-  margin-top: 10px;
-  border-radius: 50px;
-  width: 150px;
-  height: 50px;
-  font-weight: 600;
-  font-size: 15px;
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
-  align-items: center;
-  border: none;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+// .btn-principal {
+//   color: white;
+//   background-color: #ee6780;
+//   padding: 5px 5px;
+//   margin-top: 10px;
+//   border-radius: 50px;
+//   width: 150px;
+//   height: 50px;
+//   font-weight: 600;
+//   font-size: 15px;
+//   display: inline-block;
+//   text-decoration: none;
+//   text-align: center;
+//   align-items: center;
+//   border: none;
+//   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 
-  &:hover {
-    background-color: #943f4e;
-    color: white;
-  }
-}
+//   &:hover {
+//     background-color: #943f4e;
+//     color: white;
+//   }
+// }
 
 .btn-secondary {
   color: #ee6780;
@@ -143,4 +143,8 @@ h5 label {
   background-size: 16px 12px;
   border-radius: 30px;
   border: 3px solid #54BEBC;
+}
+
+.form-height {
+  height: 50px;
 }
