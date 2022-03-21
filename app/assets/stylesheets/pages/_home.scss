@@ -13,20 +13,19 @@
 }
 
 .icons-cards {
-  height: 600px;
+  height: 400px;
   width: 100%;
   background-color: #f7f3f3;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
-}
-
-.icons-session {
+  margin-bottom: 200px;
+  // margin-top: 10px;
   justify-content: center;
   align-items: center;
-  // text-align: center;
-  background-color:#f7f3f3;
-  margin-inline: 10px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
 
   h2{
     font-size: 20px;
@@ -36,16 +35,13 @@
   h4 {
     color: rgb(128, 124, 124);
     font-size: 15px;
-    margin-top: 30px;
     // cinza rgb(128, 124, 124)
   }
-
 }
 
-
 .icons-card-category {
-  padding: 20px;
-  margin-top: 20px;
+  // padding: 20px;
+  margin-top: 10px;
   background-size: cover;
   background-position: center;
   height: 180px;
