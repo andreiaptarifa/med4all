@@ -12,8 +12,6 @@
   }
 }
 
-
-
 .icons-cards {
   height: 600px;
   width: 100%;
@@ -45,6 +43,7 @@
 
 
 .icons-card-category {
+  padding: 20px;
   margin-top: 20px;
   background-size: cover;
   background-position: center;
@@ -91,4 +90,8 @@
     width: 100%;
     object-fit: contain;
   }
+}
+
+.page-container {
+  margin-top: 80px;
 }
