@@ -6,7 +6,7 @@ class DonationsController < ApplicationController
     @donation = Donation.new
     @donation.user = current_user
     @address = "#{current_user.street} #{current_user.number}, #{current_user.city}"
-    @pharmacies = Pharmacy.near(@address, 5)
+    @pharmacies = Pharmacy.near(@address, 4)
     @markers = @pharmacies.map do |pharmacy|
       {
         lat: pharmacy.latitude,
