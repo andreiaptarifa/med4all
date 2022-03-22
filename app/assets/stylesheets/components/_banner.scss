@@ -24,7 +24,7 @@
   // opacity: 0.8;
   background-position: center;
   // padding: 150px 0;
-  height: 100vh;
+  height: calc(100vh - 60px - 40px);
 }
 
   .donor-container {
@@ -44,7 +44,7 @@
 
   .secundary-text {
     position: absolute;
-    top: 550px;
+    top: 500px;
     left: 350px;
 
     h2 {
