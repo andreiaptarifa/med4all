@@ -1,0 +1,52 @@
+.picture-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.about-picture {
+  // background-position: center;
+  vertical-align: middle;
+  width: 90%;
+  margin: auto;
+  padding: 20px 20px 20px 20px;
+  // height: calc(100vh -230px);
+}
+
+.about-text {
+  text-align: center;
+}
+
+// // Smallest device
+// @media (min-width: 100px) and (max-width: 575px) {
+//   .about-picture {
+//     grid-template-columns: 1fr;
+//   }
+// }
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) {
+//   .about-picture {
+//     grid-template-columns: 1fr;
+//   }
+// }
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) {
+//   .about-picture {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) {
+//   .about-picture {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+// }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+//   .about-picture {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+// }
