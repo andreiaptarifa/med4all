@@ -11,19 +11,19 @@
                                             action: "submit->display-orders#search"
                                             } do |f| %>
               <div class="row justify-content-between">
-              <div class="col-7">
+              <div class="col-12 col-lg-7">
                 <%= f.text_field :query,
-                  class: "form-control mx-2 form-height",
+                  class: "form-control form-height",
                   placeholder: "Digite o nome do medicamento ou princípio ativo",
                   data: { display_orders_target: "input" }%>
               </div>
-              <div class="col-3">
+              <div class="col-12 col-lg-3">
                 <%= f.text_field :units,
                     class: "form-control form-height",
                     placeholder: "N° de comprimidos",
                     data: { display_orders_target: "units" }%>
               </div>
-                <div class="search-button col-2">
+                <div class="search-button col-12 col-lg-2">
                   <%= f.submit "Procurar", class: "btn-search-medication" %>
                 </div>
               </div>
