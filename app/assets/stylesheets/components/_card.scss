@@ -67,7 +67,7 @@
 .card-medication {
   background-color: #ebebeb;
   margin-top: 20px;
-  display: grid;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
@@ -103,11 +103,21 @@
   .info-cards {
     grid-template-columns: 1fr;
   }
+
+  .card-medication {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
+@media (min-width: 576px) and (max-width: 768px) {
   .info-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card-medication {
+    display: grid;
     grid-template-columns: 1fr;
   }
 }
