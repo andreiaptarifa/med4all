@@ -1,61 +1,62 @@
 <div data-controller="display-numbers" data-action="scroll@window->display-numbers#updateNumber:!passive">
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active banner-container" data-bs-interval="4500" style="background-image: linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255,0.6)), url(https://res.cloudinary.com/dwzrjmdwm/image/upload/v1647891427/development/senhora2_qhnfaa.jpg);">
-      <div class="d-flex w-100 h-100 align-items-center">
-        <p id="first-img-text">50% dos brasileiros que precisam de remédios não podem comprar e acabam abandonando o tratamento.</p>
+    <div class="carousel-inner">
+      <div class="carousel-item active banner-container" data-bs-interval="4500" style="background-image: linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255,0.6)), url(https://res.cloudinary.com/dwzrjmdwm/image/upload/v1647891427/development/senhora2_qhnfaa.jpg);">
+        <div class="d-flex w-100 h-100 align-items-center">
+          <p id="first-img-text">50% dos brasileiros que precisam de remédios não podem comprar e acabam abandonando o tratamento.</p>
+        </div>
+      </div>
+      <div class="carousel-item banner-container" data-bs-interval="4000" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(https://res.cloudinary.com/dwzrjmdwm/image/upload/v1647547309/development/image-bg_k88bsk.png);">
+        <div class="d-flex flex-column w-100 h-100 justify-content-center">
+          <p>Nós ajudamos pacientes do SUS a terem o medicamento que precisam</p>
+          <%= link_to "Doar meus remédios", new_donation_path, class:"btn-donation mt-5" %>
+        </div>
       </div>
     </div>
-    <div class="carousel-item banner-container" data-bs-interval="4000" style="background-image: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(https://res.cloudinary.com/dwzrjmdwm/image/upload/v1647547309/development/image-bg_k88bsk.png);">
-      <div class="d-flex flex-column w-100 h-100 justify-content-center">
-        <p>Nós ajudamos pacientes do SUS a terem o medicamento que precisam</p>
-        <%= link_to "Doar meus remédios", new_donation_path, class:"btn-donation mt-5" %>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="column">
+    <div class="info-cards">
+      <div class="card-category">
+        <h2 data-display-numbers-target="medication"> <%= Donation.count(:units) %></h2>
+        <h4 class="px-2"> Remédios doados</h4>
+      </div>
+      <div class="card-category">
+        <h2 data-display-numbers-target="patient"><%= MedicationOrder.count %></h2>
+        <h4 class="px-2"> Pacientes do SUS atendidos</h4>
+      </div>
+      <div class="card-category">
+        <h2 data-display-numbers-target="center"><%= Donation.count(:pharmacy_id) %></h2>
+        <h4 class="px-2"> Postos de saúde parceiros</h4>
       </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-  <div class="info-cards" >
-    <div class="card-category" >
-      <h2 data-display-numbers-target="medication"> <%= Donation.count(:units) %> </h2>
-      <h4 class="px-2"> Remédios doados</h4>
-    </div>
-    <div class="card-category" >
-      <h2 data-display-numbers-target="patient"><%= MedicationOrder.count %></h2>
-      <h4 class="px-2"> Pacientes do SUS atendidos</h4>
-    </div>
-    <div class="card-category" >
-      <h2 data-display-numbers-target="center"><%= Donation.count(:pharmacy_id) %></h2>
-      <h4 class="px-2"> Postos de saúde parceiros</h4>
-    </div>
-  </div>
-
-<%# <h3 class="icons-session">Impactos do projeto</h3> %>
-  <div class="icons-cards">
-    <div class="icons-card-category">
-      <div class="icon-image">
-        <%= image_tag("https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-money-banking-and-finance-kiranshastry-lineal-color-kiranshastry-10.png") %>
-        <p>Acesso a remédios não oferecidos no SUS</p>
+  <div class="column">
+    <div class="icon-cards">
+      <div class="icon-category">
+        <div class="icon-image">
+          <%= image_tag("https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-money-banking-and-finance-kiranshastry-lineal-color-kiranshastry-10.png") %>
+          <p>Acesso a remédios não oferecidos no SUS</p>
+        </div>
       </div>
-    </div>
-    <div class="icons-card-category">
-      <div class="icon-image">
-        <%= image_tag("https://img.icons8.com/external-fauzidea-flat-fauzidea/344/external-care-ecology-fauzidea-flat-fauzidea.png") %>
-        <p>Incentivo à doação</p>
+      <div class="icon-category">
+        <div class="icon-image">
+          <%= image_tag("https://img.icons8.com/external-fauzidea-flat-fauzidea/344/external-care-ecology-fauzidea-flat-fauzidea.png") %>
+          <p>Incentivo à doação</p>
+        </div>
       </div>
-    </div>
-    <div class="icons-card-category">
-      <div class="icon-image">
-        <%= image_tag("https://img.icons8.com/external-flaticons-lineal-color-flat-icons/344/external-support-online-money-service-flaticons-lineal-color-flat-icons.png") %>
-        <p>Redução da poluição do meio ambiente</p>
+      <div class="icon-category">
+        <div class="icon-image">
+          <%= image_tag("https://img.icons8.com/external-flaticons-lineal-color-flat-icons/344/external-support-online-money-service-flaticons-lineal-color-flat-icons.png") %>
+          <p>Redução da poluição do meio ambiente</p>
+        </div>
       </div>
     </div>
   </div>

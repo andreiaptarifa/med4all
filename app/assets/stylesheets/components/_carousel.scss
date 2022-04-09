@@ -29,9 +29,22 @@
 
 }
 
+.carousel-item:nth-child(1) {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.carousel-item:nth-child(2) {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
 .carousel-img {
   padding: 150px 0;
   height: 100vh;
+  width: 100%;
 }
 
 .btn-donation {
