@@ -4,7 +4,7 @@
     <h4><%= @medication_order.units %> comprimidos reservados<h4>
     <h5>Você tem 24 horas para retirar seu medicamento no posto <%= @medication_order.pharmacy.pharmacy_name %></h5>
     <span class="link-text">
-    <div class='d-flex align-items-end'>
+    <div class='d-flex align-items-end qr-code'>
       <div class="px-3">
       <%= @svg.html_safe %>
       </div>
