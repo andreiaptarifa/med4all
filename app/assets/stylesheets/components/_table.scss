@@ -47,3 +47,32 @@
       margin-bottom: 30px;
     }
  }
+
+ @media (min-width: 100px) and (max-width: 575px) {
+  .table-new {
+    width: 250px;
+
+    .table-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      font-size: 10pt;
+      text-align: center;
+      align-items: center;
+    }
+  }
+ }
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 768px) {
+  .table-new {
+    width: 100%;
+
+    .table-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      font-size: 12pt;
+      text-align: center;
+      align-items: center;
+    }
+  }
+}
