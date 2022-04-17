@@ -22,41 +22,37 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-  <div class="column">
-    <div class="info-cards">
-      <div class="card-category">
-        <h2 data-display-numbers-target="medication"> <%= Donation.count(:units) %></h2>
-        <h4 class="px-2"> Remédios doados</h4>
-      </div>
-      <div class="card-category">
-        <h2 data-display-numbers-target="patient"><%= MedicationOrder.count %></h2>
-        <h4 class="px-2"> Pacientes do SUS atendidos</h4>
-      </div>
-      <div class="card-category">
-        <h2 data-display-numbers-target="center"><%= Donation.count(:pharmacy_id) %></h2>
-        <h4 class="px-2"> Postos de saúde parceiros</h4>
-      </div>
+  <div class="info-cards">
+    <div class="card-category">
+      <h2 data-display-numbers-target="medication"> <%= Donation.count(:units) %></h2>
+      <h4 class="px-2"> Remédios doados</h4>
+    </div>
+    <div class="card-category">
+      <h2 data-display-numbers-target="patient"><%= MedicationOrder.count %></h2>
+      <h4 class="px-2"> Pacientes do SUS atendidos</h4>
+    </div>
+    <div class="card-category">
+      <h2 data-display-numbers-target="center"><%= Donation.count(:pharmacy_id) %></h2>
+      <h4 class="px-2"> Postos de saúde parceiros</h4>
     </div>
   </div>
-  <div class="column">
-    <div class="icon-cards">
-      <div class="icon-category">
-        <div class="icon-image">
-          <%= image_tag("https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-money-banking-and-finance-kiranshastry-lineal-color-kiranshastry-10.png") %>
-          <p>Acesso a remédios não oferecidos no SUS</p>
-        </div>
+  <div class="icon-cards">
+    <div class="icon-category">
+      <div class="icon-image">
+        <%= image_tag("https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/344/external-money-banking-and-finance-kiranshastry-lineal-color-kiranshastry-10.png") %>
+        <p>Acesso a remédios não oferecidos no SUS</p>
       </div>
-      <div class="icon-category">
-        <div class="icon-image">
-          <%= image_tag("https://img.icons8.com/external-fauzidea-flat-fauzidea/344/external-care-ecology-fauzidea-flat-fauzidea.png") %>
-          <p>Incentivo à doação</p>
-        </div>
+    </div>
+    <div class="icon-category">
+      <div class="icon-image">
+        <%= image_tag("https://img.icons8.com/external-fauzidea-flat-fauzidea/344/external-care-ecology-fauzidea-flat-fauzidea.png") %>
+        <p>Incentivo à doação</p>
       </div>
-      <div class="icon-category">
-        <div class="icon-image">
-          <%= image_tag("https://img.icons8.com/external-flaticons-lineal-color-flat-icons/344/external-support-online-money-service-flaticons-lineal-color-flat-icons.png") %>
-          <p>Redução da poluição do meio ambiente</p>
-        </div>
+    </div>
+    <div class="icon-category">
+      <div class="icon-image">
+        <%= image_tag("https://img.icons8.com/external-flaticons-lineal-color-flat-icons/344/external-support-online-money-service-flaticons-lineal-color-flat-icons.png") %>
+        <p>Redução da poluição do meio ambiente</p>
       </div>
     </div>
   </div>

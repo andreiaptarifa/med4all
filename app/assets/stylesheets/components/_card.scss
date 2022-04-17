@@ -44,12 +44,13 @@
 }
 
 .icon-cards {
-  height: 100vh;
+  height: 78vh;
   width: 100%;
   background-color: #FCFFFD;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  margin-bottom: 0;
 }
 
 .icon-category {
@@ -97,17 +98,26 @@
 
   .icon-cards {
     grid-template-columns: 1fr;
+    height: 100vh;
+
+    p {
+      margin-bottom: 20px;
+    }
   }
 }
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
+@media (min-width: 576px) and (max-width: 768px) {
   .info-cards {
     grid-template-columns: 1fr;
   }
 
   .icon-cards {
     grid-template-columns: 1fr;
+    height: 100vh;
+    p {
+      margin-bottom: 20px;
+    }
   }
 }
 
