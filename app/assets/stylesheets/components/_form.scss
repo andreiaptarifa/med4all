@@ -17,6 +17,13 @@
   }
 }
 
+@media (min-width: 576px) and (max-width: 768px) {
+  .new-container {
+    margin: 5px;
+    padding: 10px;
+  }
+}
+
 .form-search input {
   margin-bottom: 1rem;
 }
