@@ -9,11 +9,15 @@
                                           display_results_target: "form",
                                           action: "submit->display-results#search"
                                           } do |f| %>
-          <div class="d-flex justify-content-between">
+          <div class="row d-flex justify-content-between">
+          <div class="col-12 col-lg-10">
             <%= f.text_field :query,
               class: "form-control mx-2",
               placeholder: "Digite o nome do medicamento ou princípio ativo", data: { display_results_target: "input" }%>
+          </div>
+          <div class="col-12 col-lg-2">
             <%= f.submit "Procurar", class: "btn-donation mx-2"%>
+          </div>
           </div>
       <% end %>
       </div>
