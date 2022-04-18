@@ -2,7 +2,8 @@
 .form-container {
   margin-left: 100px;
   margin-top: 40px;
-  }
+}
+
 
 .margin-anchor{
   margin-top: 200px;
@@ -17,10 +18,27 @@
   }
 }
 
+@media (min-width: 100px) and (max-width: 575px) {
+  .new-container {
+    margin: 5px;
+    padding-top: 100px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+  }
+
+  .form-container > h1 {
+    width: 100%;
+  }
+}
+
 @media (min-width: 576px) and (max-width: 768px) {
   .new-container {
     margin: 5px;
-    padding: 10px;
+    padding-top: 100px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
   }
 }
 
@@ -43,6 +61,7 @@ h1 {
   font-weight: bold;
   color: #54BEBC;
 }
+
 
 h2 {
   font-family: "Montserrat", "Helvetica", "sans-serif";
@@ -155,5 +174,3 @@ h5 label {
 .form-height {
   height: 50px;
 }
-
-
