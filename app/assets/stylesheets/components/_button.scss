@@ -185,6 +185,20 @@
   }
 }
 
+@media (min-width: 100px) and (max-width: 575px) {
+  .search-btn > .btn-donation {
+    width: 100%;
+    padding: 5px 10px;
+  }
+}
+
+@media (min-width: 992px) {
+  .search-btn > .btn-donation {
+    width: 100%;
+    padding: 5px 10px;
+  }
+}
+
 .btn-unimportant {
   margin-left: 30px;
   padding: 20px;

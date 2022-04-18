@@ -10,12 +10,12 @@
                                           action: "submit->display-results#search"
                                           } do |f| %>
           <div class="row d-flex justify-content-between">
-          <div class="col-12 col-lg-10">
+          <div class="col-12 col-lg-7">
             <%= f.text_field :query,
               class: "form-control mx-2",
               placeholder: "Digite o nome do medicamento ou princípio ativo", data: { display_results_target: "input" }%>
           </div>
-          <div class="col-12 col-lg-2">
+          <div class="search-btn col-12 col-lg-3">
             <%= f.submit "Procurar", class: "btn-donation mx-2"%>
           </div>
           </div>
@@ -31,10 +31,10 @@
       <h5>
         <%= f.input :medication_id, :label => false , as: :hidden, input_html: { value: params[:medication_id] } %>
         <div class="row">
-          <div class= "form-medication col-5">
+          <div class= "form-medication col-10 col-lg-5">
             <%= f.input :units, :label => "Nº de comprimidos", class:'d-none' %>
           </div>
-           <div class= "form-medication col-5">
+           <div class= "form-medication col-10 col-lg-5">
             <%= f.input :expiry_date, label: "Data de validade", class: "d-none", as: :string, required: true, input_html: { class: "datepicker" } %>
           </div>
         </div>
